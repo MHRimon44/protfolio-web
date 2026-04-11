@@ -77,10 +77,6 @@ const Education = () => {
                     {edu.institution}
                   </p>
 
-                  <div className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-lg inline-block mb-4 shadow-lg">
-                    <span className="font-bold">{edu.grade}</span>
-                  </div>
-
                   <p className="text-slate-400 text-sm leading-relaxed">
                     {edu.description}
                   </p>

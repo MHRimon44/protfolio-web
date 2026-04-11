@@ -8,8 +8,8 @@ export const personalInfo = {
   location: "Mirpur 1, Dhaka, Bangladesh",
   email: "mehedihasanrimon01@gmail.com",
   phone: "+8801792085854",
-  linkedin: "https://www.linkedin.com/in/mdhasan",
-  github: "https://github.com/mdhasan",
+  linkedin: "https://www.linkedin.com/in/mehedi-hasan-7222122b2/",
+  github: "https://github.com/MHRimon44",
   yearsOfExperience: 2,
   projectsCompleted: 10,
 };
@@ -45,7 +45,7 @@ export const experience = [
     period: "Dec 2025 – Present",
     current: true,
     description:
-      "Developed marketplace and POS apps including DC POS and Shop POS systems.",
+      "Developed marketplace and POS apps including DC POS, Shop POS systems and Notification App",
     achievements: [
       "Built marketplace application from scratch",
       "Developed POS systems for retail management",
@@ -76,7 +76,13 @@ export const projects = [
     category: "E-commerce",
     description:
       "Comprehensive marketplace application with advanced features for online shopping and vendor management.",
-    techStack: ["React Native", "TypeScript", "Redux", "RTK Query"],
+    techStack: [
+      "React Native",
+      "TypeScript",
+      "Redux",
+      "RTK Query",
+      "Shopify Restyle",
+    ],
     image: "/placeholder-project.png",
     featured: true,
   },
@@ -178,7 +184,6 @@ export const education = [
     degree: "BSc in Software Engineering",
     institution: "Daffodil International University",
     period: "2020 – 2024",
-    grade: "CGPA: 3.66",
     description:
       "Focused on software development, mobile applications, and system design.",
   },
@@ -187,7 +192,6 @@ export const education = [
     degree: "Higher Secondary Certificate (HSC)",
     institution: "High School",
     period: "2018 – 2020",
-    grade: "GPA: 5.00",
     description: "Science background with excellent academic performance.",
   },
   {
@@ -195,7 +199,6 @@ export const education = [
     degree: "Secondary School Certificate (SSC)",
     institution: "Secondary School",
     period: "2016 – 2018",
-    grade: "GPA: 5.00",
     description: "Strong foundation in mathematics and science.",
   },
 ];
