@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/portfolio";
+import { heroPortrait } from "@/assets";
+import Image from "next/image";
 
 const AnimatedCounter = ({ target, duration = 2 }) => {
   const [count, setCount] = useState(0);
@@ -29,6 +31,15 @@ const AnimatedCounter = ({ target, duration = 2 }) => {
 
   return <span>{count}</span>;
 };
+
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "/resume.pdf";
+  link.download = "Mehedi-Hasan-Rimon-Resume.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}; 
 
 const Hero = () => {
   const isLoaded = true;
@@ -156,8 +167,15 @@ const Hero = () => {
                 </Button>
               </motion.div>
             </motion.div>
-
-            <motion.div
+<Button
+  variant="ghost"
+  onClick={handleDownload}
+  className="text-slate-400 hover:text-cyan-400 hover:bg-ocean-800/50"
+>
+  <Download className="mr-2" size={18} />
+  Download Resume
+</Button>
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ delay: 0.7, duration: 0.8 }}
@@ -172,7 +190,7 @@ const Hero = () => {
                   Download Resume
                 </Button>
               </motion.div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Right Content - Abstract Profile Design */}
@@ -220,21 +238,26 @@ const Hero = () => {
                   >
                     <div className="w-40 h-40 border-4 border-teal-400/20 rounded-full"></div>
                   </motion.div>
-                  {/* Center Icon */}
-                  <div className="relative z-10 text-center">
+                  {/* Profile photo */}
+                  <div className="relative z-10 flex flex-col items-center text-center">
                     <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
+                      animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="text-6xl mb-2"
+                      className="mb-2"
                     >
-                      <div className="w-24 h-24 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-full flex items-center justify-center">
-                        <span className="text-4xl font-bold text-white">
-                          MH
-                        </span>
+                      <div className="relative h-28 w-28 lg:h-32 lg:w-32 rounded-full overflow-hidden ring-4 ring-cyan-400/45 shadow-xl">
+                        <Image
+                          src={heroPortrait}
+                          alt={`${personalInfo.name} — portrait`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 112px, 128px"
+                          priority
+                        />
                       </div>
                     </motion.div>
-                    <p className="text-sm text-cyan-400 font-medium mt-4">
-                      Software Engineer
+                    <p className="text-sm text-cyan-400 font-medium mt-4 max-w-[12rem]">
+                      Mobile App Developer
                     </p>
                   </div>
                 </div>
