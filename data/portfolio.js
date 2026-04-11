@@ -85,6 +85,10 @@ export const projects = [
     ],
     image: "/placeholder-project.png",
     featured: true,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.saralifestyle&pcampaignid=web_share",
+    appStoreUrl:
+      "https://apps.apple.com/us/app/sara-lifestyle-ltd/id6746068529",
   },
   {
     id: 2,
@@ -95,10 +99,16 @@ export const projects = [
     techStack: ["React Native", "Redux", "Tailwind CSS"],
     image: "/placeholder-project.png",
     featured: true,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.fresco&pcampaignid=web_share",
+    appStoreUrl: "https://apps.apple.com/gb/app/fresco-lisboa/id6752566353",
   },
   {
     id: 3,
     name: "Ab Mini Mercado App",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.abminimercado&pcampaignid=web_share",
+    appStoreUrl: "https://apps.apple.com/gb/app/ab-mini-mercado/id6753908732",
     category: "E-commerce",
     description:
       "Mobile marketplace for local vendors with inventory management and order tracking.",
@@ -109,6 +119,9 @@ export const projects = [
   {
     id: 4,
     name: "CRM System",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.crm&pcampaignid=web_share",
+    appStoreUrl: "https://apps.apple.com/ng/app/crm-by-segasoftbd/id6755300179",
     category: "CRM",
     description:
       "Customer Relationship Management system for managing client interactions and sales pipeline.",
@@ -119,6 +132,9 @@ export const projects = [
   {
     id: 5,
     name: "Sales App",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.sale&pcampaignid=web_share",
+    appStoreUrl: "",
     category: "ERP",
     description:
       "Comprehensive sales management application with real-time reporting and analytics.",
@@ -129,6 +145,9 @@ export const projects = [
   {
     id: 6,
     name: "Invoice App",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.invoice&pcampaignid=web_share",
+    appStoreUrl: "",
     category: "ERP",
     description:
       "Professional invoicing solution with automated billing and payment tracking.",
@@ -139,6 +158,10 @@ export const projects = [
   {
     id: 7,
     name: "Delivery App",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.delivery&pcampaignid=web_share",
+    appStoreUrl:
+      "https://apps.apple.com/dk/app/quicker-delivery/id6755297018?l=da",
     category: "Logistics",
     description:
       "Real-time delivery tracking system with route optimization and driver management.",
@@ -149,6 +172,9 @@ export const projects = [
   {
     id: 8,
     name: "ERP System",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.smartsoftwareltd.salesforce&pcampaignid=web_share",
+    appStoreUrl: "",
     category: "ERP",
     description:
       "Enterprise Resource Planning system integrating multiple business processes.",
@@ -159,6 +185,9 @@ export const projects = [
   {
     id: 9,
     name: "HRM System",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.smartsoftware.hrm&pcampaignid=web_share",
+    appStoreUrl: "",
     category: "HRM",
     description:
       "Human Resource Management system for employee management and payroll processing.",
@@ -169,10 +198,13 @@ export const projects = [
   {
     id: 10,
     name: "Clinical Management of Rape (CMR) Module",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.theicthub.Navigation&pcampaignid=web_share",
+    appStoreUrl: "",
     category: "Healthcare",
     description:
       "Sensitive healthcare application module for clinical documentation and case management.",
-    techStack: ["React Native", "TypeScript", "Redux"],
+    techStack: ["React Native", "JavaScript", "Redux"],
     image: "/placeholder-project.png",
     featured: true,
   },

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   ExternalLink,
+  Store,
   Smartphone,
   ShoppingCart,
   Users,
@@ -62,9 +63,10 @@ const Projects = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-5xl font-bold text-white mb-4">Projects</h2>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
+              <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                A showcase of applications I&apos;ve built across various domains
+                A showcase of applications I&apos;ve built across various
+                domains
               </p>
             </motion.div>
           </div>
@@ -87,7 +89,7 @@ const Projects = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`${
                     selectedCategory === category
-                      ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg glow-cyan"
+                      ? "bg-linear-to-r from-cyan-500 to-teal-500 text-white shadow-lg glow-cyan"
                       : "glass border-cyan-500/30 text-cyan-400 hover:border-cyan-500 hover:bg-cyan-500/10"
                   } transition-all font-semibold`}
                 >
@@ -119,7 +121,7 @@ const Projects = () => {
                   className="glass rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/40 card-hover glow-cyan group cursor-pointer"
                 >
                   {/* Project Visual - Abstract Geometric Design */}
-                  <div className="relative h-48 bg-gradient-to-br from-ocean-800 to-ocean-900 overflow-hidden">
+                  <div className="relative h-48 bg-linear-to-br from-ocean-800 to-ocean-900 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       {/* Animated background pattern */}
                       <motion.div
@@ -147,7 +149,7 @@ const Projects = () => {
                               : { rotate: 0 }
                           }
                           transition={{ duration: 0.8 }}
-                          className="inline-block p-6 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
+                          className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
                         >
                           <CategoryIcon className="text-cyan-400" size={48} />
                         </motion.div>
@@ -177,14 +179,14 @@ const Projects = () => {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="absolute top-3 right-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
+                        className="absolute top-3 right-3 bg-linear-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
                       >
                         Featured
                       </motion.div>
                     )}
 
                     {/* Overlay gradient on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-ocean-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-ocean-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
 
                   {/* Project Info */}
@@ -216,13 +218,59 @@ const Projects = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Button
-                        variant="ghost"
-                        className="w-full text-cyan-400 hover:text-white hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 border border-cyan-500/30 hover:border-transparent transition-all"
-                      >
-                        View Details
-                        <ExternalLink className="ml-2" size={16} />
-                      </Button>
+                      <div className="space-y-3">
+                        {(project.playStoreUrl || project.appStoreUrl) && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {project.playStoreUrl ? (
+                              <a
+                                href={project.playStoreUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
+                              >
+                                <Store className="mr-2" size={16} />
+                                Play Store
+                              </a>
+                            ) : (
+                              <Button
+                                variant="ghost"
+                                disabled
+                                className="w-full border border-cyan-500/20 text-slate-500"
+                              >
+                                Play Store
+                              </Button>
+                            )}
+
+                            {project.appStoreUrl ? (
+                              <a
+                                href={project.appStoreUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
+                              >
+                                <ExternalLink className="mr-2" size={16} />
+                                App Store
+                              </a>
+                            ) : (
+                              <Button
+                                variant="ghost"
+                                disabled
+                                className="w-full border border-cyan-500/20 text-slate-500"
+                              >
+                                App Store
+                              </Button>
+                            )}
+                          </div>
+                        )}
+
+                        {/* <Button
+                          variant="ghost"
+                          className="w-full text-cyan-400 hover:text-white hover:bg-linear-to-r hover:from-cyan-500 hover:to-teal-500 border border-cyan-500/30 hover:border-transparent transition-all"
+                        >
+                          View Details
+                          <ExternalLink className="ml-2" size={16} />
+                        </Button> */}
+                      </div>
                     </motion.div>
                   </div>
                 </motion.div>
