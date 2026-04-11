@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
-  ExternalLink,
-  Store,
+  Apple,
   Smartphone,
   ShoppingCart,
   Users,
@@ -15,6 +14,20 @@ import {
 } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
+
+const PlayStoreLogo = () => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    className="mr-2 h-4 w-4 shrink-0"
+  >
+    <path d="M3.5 2.5v19l9.2-9.1z" fill="#00d9ff" />
+    <path d="M12.7 12.4l2.7-2.7L6 2.7c-.7-.4-1.5-.4-2.1 0l8.8 9.7z" fill="#14b8a6" />
+    <path d="M12.7 12.4L3.9 22c.6.4 1.4.4 2.1 0l9.4-6-2.7-3.6z" fill="#00bcd4" />
+    <path d="M15.4 15.5L22 12c0-.8-.4-1.5-1.1-1.9l-5.5-3.2-2.7 2.7z" fill="#ffcf4d" />
+    <path d="M15.4 15.5l-2.7-3.1-8.8 9.6c.6.3 1.3.3 1.9 0l9.6-6.5z" fill="#ff6b6b" />
+  </svg>
+);
 
 const categoryIcons = {
   "E-commerce": ShoppingCart,
@@ -228,7 +241,7 @@ const Projects = () => {
                                 rel="noreferrer"
                                 className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
                               >
-                                <Store className="mr-2" size={16} />
+                                <PlayStoreLogo />
                                 Play Store
                               </a>
                             ) : (
@@ -248,7 +261,7 @@ const Projects = () => {
                                 rel="noreferrer"
                                 className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
                               >
-                                <ExternalLink className="mr-2" size={16} />
+                                <Apple className="mr-2" size={16} />
                                 App Store
                               </a>
                             ) : (
