@@ -20,7 +20,6 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Detect active section
       const sections = [
         "hero",
         "about",
@@ -31,6 +30,7 @@ const Navbar = () => {
         "leadership",
         "contact",
       ];
+
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -71,15 +71,20 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-500 origin-left z-[60]"
-        style={{ scaleX }}
-      />
+      {/* Progress bar */}
+      <div className="fixed top-0 left-0 right-0 z-40 h-1 overflow-hidden border-b border-white/5 bg-ocean-950/90 backdrop-blur-md">
+        <motion.div
+          className="h-full origin-left bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 shadow-[0_0_18px_rgba(0,217,255,0.35)]"
+          style={{ scaleX }}
+        />
+      </div>
 
+      {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "glass glow-cyan mt-1" : "bg-transparent mt-1"
+        className={`fixed top-0 left-0 right-0 z-50 border-b border-white/5 transition-all duration-500 ${
+          isScrolled
+            ? "navbar-glass shadow-lg shadow-ocean-950/25"
+            : "navbar-glass"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,7 +100,7 @@ const Navbar = () => {
               MH
             </motion.a>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
@@ -106,7 +111,7 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
-                    className={`text-sm font-medium transition-all relative group ${
+                    className={`text-sm font-medium relative ${
                       isActive
                         ? "text-cyan-400"
                         : "text-slate-300 hover:text-cyan-400"
@@ -114,31 +119,22 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                   >
                     {link.name}
-                    <span
-                      className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-teal-500 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    ></span>
                   </motion.a>
                 );
               })}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+
+              <Button
+                size="sm"
+                className="bg-linear-to-r from-cyan-500 to-teal-500 text-white font-semibold"
+                onClick={(e) => scrollToSection(e, "#contact")}
               >
-                <Button
-                  size="sm"
-                  className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold shadow-lg hover:shadow-cyan-500/50 transition-all"
-                  onClick={(e) => scrollToSection(e, "#contact")}
-                >
-                  Get in Touch
-                </Button>
-              </motion.div>
+                Get in Touch
+              </Button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Button */}
             <motion.button
-              className="md:hidden p-2 text-cyan-400 hover:text-cyan-300"
+              className="md:hidden p-2 text-cyan-400"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.9 }}
             >
@@ -149,40 +145,27 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden glass border-t border-cyan-500/20"
-          >
+          <div className="md:hidden navbar-glass border-t border-white/10">
             <div className="px-4 py-4 space-y-3">
-              {navLinks.map((link) => {
-                const sectionId = link.href.replace("#", "");
-                const isActive = activeSection === sectionId;
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="block px-3 py-2 text-slate-300 hover:text-cyan-400"
+                >
+                  {link.name}
+                </a>
+              ))}
 
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
-                    className={`block px-3 py-2 text-base font-medium rounded-md transition-all ${
-                      isActive
-                        ? "text-cyan-400 bg-cyan-500/10"
-                        : "text-slate-300 hover:text-cyan-400 hover:bg-ocean-800/50"
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
               <Button
-                className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold"
+                className="w-full bg-linear-to-r from-cyan-500 to-teal-500 text-white"
                 onClick={(e) => scrollToSection(e, "#contact")}
               >
                 Get in Touch
               </Button>
             </div>
-          </motion.div>
+          </div>
         )}
       </nav>
     </>

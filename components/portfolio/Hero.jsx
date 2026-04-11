@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/portfolio";
-import { heroPortrait } from "@/assets";
-import Image from "next/image";
 
 const AnimatedCounter = ({ target, duration = 2 }) => {
   const [count, setCount] = useState(0);
@@ -33,13 +31,11 @@ const AnimatedCounter = ({ target, duration = 2 }) => {
 };
 
 const handleDownload = () => {
-  const link = document.createElement("a");
-  link.href = "/resume.pdf";
-  link.download = "Mehedi-Hasan-Rimon-Resume.pdf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}; 
+  window.open(
+    "https://drive.google.com/file/d/1Y2GK4ffFKYBu5uagPl8AO3Y_0FYL9HZa/view?usp=drive_link",
+    "_blank",
+  );
+};
 
 const Hero = () => {
   const isLoaded = true;
@@ -99,13 +95,14 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.6fr] gap-12 items-center">
+          {" "}
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isLoaded ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6"
+            className="space-y-6 max-w-2xl lg:max-w-3xl"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -123,10 +120,10 @@ const Hero = () => {
                   Hello, I&apos;m
                 </p>
               </div>
-              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+              <h1 className="text-5xl lg:text-7xl font-bold text-white mb-4 leading-tight whitespace-nowrap">
                 {personalInfo.name}
               </h1>
-              <p className="text-3xl lg:text-4xl font-semibold gradient-text mb-4">
+              <p className="text-3xl lg:text-4xl font-semibold gradient-text mb-4 ">
                 {personalInfo.title}
               </p>
               <p className="text-lg text-slate-300 leading-relaxed">
@@ -167,14 +164,14 @@ const Hero = () => {
                 </Button>
               </motion.div>
             </motion.div>
-<Button
-  variant="ghost"
-  onClick={handleDownload}
-  className="text-slate-400 hover:text-cyan-400 hover:bg-ocean-800/50"
->
-  <Download className="mr-2" size={18} />
-  Download Resume
-</Button>
+            <Button
+              variant="ghost"
+              onClick={handleDownload}
+              className="text-slate-400 hover:text-cyan-400 hover:bg-ocean-800/50"
+            >
+              <Download className="mr-2" size={18} />
+              Download Resume
+            </Button>
             {/* <motion.div
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
@@ -192,16 +189,14 @@ const Hero = () => {
               </motion.div>
             </motion.div> */}
           </motion.div>
-
           {/* Right Content - Abstract Profile Design */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 50, scale: 0.8 }}
             animate={isLoaded ? { opacity: 1, x: 0, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
-              {/* Main Circle with Geometric Pattern */}
               <motion.div
                 animate={{
                   y: [0, -20, 0],
@@ -211,11 +206,9 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 shadow-2xl glow-cyan-strong flex items-center justify-center relative overflow-hidden"
+                className="w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 shadow-2xl glow-cyan-strong flex items-center justify-center relative overflow-hidden"
               >
-                {/* Inner Circle */}
-                <div className="w-72 h-72 lg:w-88 lg:h-88 rounded-full bg-ocean-900 flex items-center justify-center relative overflow-hidden">
-                  {/* Geometric Shapes */}
+                <div className="w-56 h-56 lg:w-72 lg:h-72 rounded-full bg-ocean-900 flex items-center justify-center relative overflow-hidden">
                   <motion.div
                     className="absolute inset-0 flex items-center justify-center"
                     animate={{ rotate: 360 }}
@@ -238,7 +231,6 @@ const Hero = () => {
                   >
                     <div className="w-40 h-40 border-4 border-teal-400/20 rounded-full"></div>
                   </motion.div>
-                  {/* Profile photo */}
                   <div className="relative z-10 flex flex-col items-center text-center">
                     <motion.div
                       animate={{ scale: [1, 1.05, 1] }}
@@ -246,29 +238,19 @@ const Hero = () => {
                       className="mb-2"
                     >
                       <div className="relative h-28 w-28 lg:h-32 lg:w-32 rounded-full overflow-hidden ring-4 ring-cyan-400/45 shadow-xl">
-                        <Image
-                          src={heroPortrait}
-                          alt={`${personalInfo.name} — portrait`}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 1024px) 112px, 128px"
-                          priority
-                        />
+                        <p className="absolute inset-0 flex items-center justify-center text-3xl lg:text-4xl font-extrabold text-cyan-400 tracking-wider">
+                          MH
+                        </p>
                       </div>
                     </motion.div>
-                    <p className="text-sm text-cyan-400 font-medium mt-4 max-w-[12rem]">
-                      Mobile App Developer
-                    </p>
                   </div>
                 </div>
-                {/* Animated rings */}
                 <motion.div
                   className="absolute inset-0 rounded-full border-4 border-cyan-400/30"
                   animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.1, 0.3] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 />
               </motion.div>
-              {/* Decorative Elements */}
               <motion.div
                 className="absolute -top-6 -right-6 w-32 h-32 bg-cyan-500 rounded-full opacity-20 blur-3xl"
                 animate={{ scale: [1, 1.2, 1] }}
@@ -280,7 +262,7 @@ const Hero = () => {
                 transition={{ duration: 5, repeat: Infinity, delay: 1 }}
               />
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Animated Stats */}
