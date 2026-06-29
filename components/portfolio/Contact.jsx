@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -153,7 +154,7 @@ const Contact = () => {
               <h2 className="text-5xl font-bold text-white mb-4">
                 Get In Touch
               </h2>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
+              <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                 Let&apos;s discuss your next project or opportunity
               </p>
@@ -179,7 +180,7 @@ const Contact = () => {
                     whileTap={{ scale: 0.98 }}
                     className="flex items-center space-x-4 p-4 glass rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all group"
                   >
-                    <div className="p-3 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg group-hover:scale-110 transition-transform shadow-lg glow-cyan">
+                    <div className="p-3 bg-linear-to-br from-cyan-500 to-teal-500 rounded-lg group-hover:scale-110 transition-transform shadow-lg glow-cyan">
                       <Mail className="text-white" size={24} />
                     </div>
                     <div>
@@ -196,7 +197,7 @@ const Contact = () => {
                     whileTap={{ scale: 0.98 }}
                     className="flex items-center space-x-4 p-4 glass rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all group"
                   >
-                    <div className="p-3 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg group-hover:scale-110 transition-transform shadow-lg glow-cyan">
+                    <div className="p-3 bg-linear-to-br from-cyan-500 to-teal-500 rounded-lg group-hover:scale-110 transition-transform shadow-lg glow-cyan">
                       <Phone className="text-white" size={24} />
                     </div>
                     <div>
@@ -211,7 +212,7 @@ const Contact = () => {
                     whileHover={{ scale: 1.02, x: 10 }}
                     className="flex items-center space-x-4 p-4 glass rounded-xl border border-cyan-500/20"
                   >
-                    <div className="p-3 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg shadow-lg">
+                    <div className="p-3 bg-linear-to-br from-cyan-500 to-teal-500 rounded-lg shadow-lg">
                       <MapPin className="text-white" size={24} />
                     </div>
                     <div>
@@ -236,7 +237,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-4 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-xl shadow-lg glow-cyan hover:shadow-2xl transition-all"
+                    className="p-4 bg-linear-to-br from-cyan-500 to-teal-500 rounded-xl shadow-lg glow-cyan hover:shadow-2xl transition-all"
                   >
                     <LinkedinIcon className="text-white" size={28} />
                   </motion.a>
@@ -246,7 +247,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, rotate: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-4 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-xl shadow-lg glow-cyan hover:shadow-2xl transition-all"
+                    className="p-4 bg-linear-to-br from-cyan-500 to-teal-500 rounded-xl shadow-lg glow-cyan hover:shadow-2xl transition-all"
                   >
                     <GithubIcon className="text-white" size={28} />
                   </motion.a>
@@ -404,7 +405,7 @@ const Contact = () => {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold shadow-lg glow-cyan transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-linear-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-semibold shadow-lg glow-cyan transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
