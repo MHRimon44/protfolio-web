@@ -14,18 +14,27 @@ import {
 } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const PlayStoreLogo = () => (
-  <svg
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    className="mr-2 h-4 w-4 shrink-0"
-  >
+  <svg viewBox="0 0 24 24" aria-hidden="true" className="mr-2 h-4 w-4 shrink-0">
     <path d="M3.5 2.5v19l9.2-9.1z" fill="#00d9ff" />
-    <path d="M12.7 12.4l2.7-2.7L6 2.7c-.7-.4-1.5-.4-2.1 0l8.8 9.7z" fill="#14b8a6" />
-    <path d="M12.7 12.4L3.9 22c.6.4 1.4.4 2.1 0l9.4-6-2.7-3.6z" fill="#00bcd4" />
-    <path d="M15.4 15.5L22 12c0-.8-.4-1.5-1.1-1.9l-5.5-3.2-2.7 2.7z" fill="#ffcf4d" />
-    <path d="M15.4 15.5l-2.7-3.1-8.8 9.6c.6.3 1.3.3 1.9 0l9.6-6.5z" fill="#ff6b6b" />
+    <path
+      d="M12.7 12.4l2.7-2.7L6 2.7c-.7-.4-1.5-.4-2.1 0l8.8 9.7z"
+      fill="#14b8a6"
+    />
+    <path
+      d="M12.7 12.4L3.9 22c.6.4 1.4.4 2.1 0l9.4-6-2.7-3.6z"
+      fill="#00bcd4"
+    />
+    <path
+      d="M15.4 15.5L22 12c0-.8-.4-1.5-1.1-1.9l-5.5-3.2-2.7 2.7z"
+      fill="#ffcf4d"
+    />
+    <path
+      d="M15.4 15.5l-2.7-3.1-8.8 9.6c.6.3 1.3.3 1.9 0l9.6-6.5z"
+      fill="#ff6b6b"
+    />
   </svg>
 );
 
@@ -118,9 +127,6 @@ const Projects = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredProjects.map((project, index) => {
-              const CategoryIcon =
-                categoryIcons[project.category] || categoryIcons.default;
-
               return (
                 <motion.div
                   key={project.id}
@@ -164,7 +170,13 @@ const Projects = () => {
                           transition={{ duration: 0.8 }}
                           className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
                         >
-                          <CategoryIcon className="text-cyan-400" size={48} />
+                          <Image
+                            src={project.image}
+                            alt={project.name}
+                            width={70}
+                            height={70}
+                            className="object-contain"
+                          />
                         </motion.div>
                         <p className="text-sm font-medium text-slate-400 mt-3">
                           {project.category}

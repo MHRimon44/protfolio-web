@@ -1,4 +1,15 @@
-// Portfolio Data - Mock Data
+import abmImg from "@/assets/projectImage/abm.webp";
+import crmImg from "@/assets/projectImage/crm.webp";
+import deliveryImg from "@/assets/projectImage/delivery.webp";
+import erpImg from "@/assets/projectImage/erp.png";
+import frescoImg from "@/assets/projectImage/fresco.webp";
+import hrmImg from "@/assets/projectImage/hrm.png";
+import investorImg from "@/assets/projectImage/investor.webp";
+import saleImg from "@/assets/projectImage/sale.webp";
+import saraImg from "@/assets/projectImage/sara.webp";
+import invoiceImg from "@/assets/projectImage/invoice.webp";
+import cmrImg from "@/assets/projectImage/cmr.png";
+
 export const personalInfo = {
   name: "MD Mehedi Hasan",
   title: "Software Engineer | Mobile App Developer",
@@ -83,7 +94,7 @@ export const projects = [
       "RTK Query",
       "Shopify Restyle",
     ],
-    image: "/placeholder-project.png",
+    image: saraImg,
     featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.saralifestyle&pcampaignid=web_share",
@@ -97,7 +108,7 @@ export const projects = [
     description:
       "Modern e-commerce platform for fresh groceries and daily essentials with seamless checkout experience.",
     techStack: ["React Native", "Redux", "Tailwind CSS"],
-    image: "/placeholder-project.png",
+    image: frescoImg,
     featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.segasoftbd.fresco&pcampaignid=web_share",
@@ -113,7 +124,7 @@ export const projects = [
     description:
       "Mobile marketplace for local vendors with inventory management and order tracking.",
     techStack: ["React Native", "TypeScript", "SQLite"],
-    image: "/placeholder-project.png",
+    image: abmImg,
     featured: false,
   },
   {
@@ -126,7 +137,7 @@ export const projects = [
     description:
       "Customer Relationship Management system for managing client interactions and sales pipeline.",
     techStack: ["React Native", "Redux", "RTK Query"],
-    image: "/placeholder-project.png",
+    image: crmImg,
     featured: true,
   },
   {
@@ -139,7 +150,7 @@ export const projects = [
     description:
       "Comprehensive sales management application with real-time reporting and analytics.",
     techStack: ["React Native", "TypeScript", "Redux"],
-    image: "/placeholder-project.png",
+    image: saleImg,
     featured: false,
   },
   {
@@ -152,7 +163,7 @@ export const projects = [
     description:
       "Professional invoicing solution with automated billing and payment tracking.",
     techStack: ["React Native", "SQLite", "Redux"],
-    image: "/placeholder-project.png",
+    image: invoiceImg,
     featured: false,
   },
   {
@@ -166,7 +177,7 @@ export const projects = [
     description:
       "Real-time delivery tracking system with route optimization and driver management.",
     techStack: ["React Native", "Redux", "TypeScript"],
-    image: "/placeholder-project.png",
+    image: deliveryImg,
     featured: true,
   },
   {
@@ -179,7 +190,7 @@ export const projects = [
     description:
       "Enterprise Resource Planning system integrating multiple business processes.",
     techStack: ["React Native", "TypeScript", "RTK Query"],
-    image: "/placeholder-project.png",
+    image: erpImg,
     featured: false,
   },
   {
@@ -192,7 +203,7 @@ export const projects = [
     description:
       "Human Resource Management system for employee management and payroll processing.",
     techStack: ["React Native", "Redux", "SQLite"],
-    image: "/placeholder-project.png",
+    image: hrmImg,
     featured: false,
   },
   {
@@ -205,8 +216,21 @@ export const projects = [
     description:
       "Sensitive healthcare application module for clinical documentation and case management.",
     techStack: ["React Native", "JavaScript", "Redux"],
-    image: "/placeholder-project.png",
+    image: cmrImg,
     featured: true,
+  },
+  {
+    id: 11,
+    name: "Investor App",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.segasoftbd.ims&pcampaignid=web_share",
+    appStoreUrl: "",
+    category: "Finance",
+    description:
+      "Investment management application for tracking portfolios and financial insights.",
+    techStack: ["React Native", "TypeScript", "Redux"],
+    image: investorImg,
+    featured: false,
   },
 ];
 
