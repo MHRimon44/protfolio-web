@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  Apple,
-  Smartphone,
-  ShoppingCart,
-  Users,
-  Package,
-  Truck,
-  FileText,
-  Building2,
-  Heart,
-} from "lucide-react";
+import { Apple } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -37,17 +27,6 @@ const PlayStoreLogo = () => (
     />
   </svg>
 );
-
-const categoryIcons = {
-  "E-commerce": ShoppingCart,
-  CRM: Users,
-  ERP: Building2,
-  POS: Package,
-  Logistics: Truck,
-  HRM: FileText,
-  Healthcare: Heart,
-  default: Smartphone,
-};
 
 const Projects = () => {
   const [ref, inView] = useInView({
