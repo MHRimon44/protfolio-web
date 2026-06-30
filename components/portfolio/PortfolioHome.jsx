@@ -7,6 +7,7 @@ import About from "@/components/portfolio/About";
 import Skills from "@/components/portfolio/Skills";
 import Experience from "@/components/portfolio/Experience";
 import Projects from "@/components/portfolio/Projects";
+import CaseStudies from "@/components/portfolio/CaseStudies";
 import Education from "@/components/portfolio/Education";
 import Leadership from "@/components/portfolio/Leadership";
 import Contact from "@/components/portfolio/Contact";
@@ -24,6 +25,7 @@ export default function PortfolioHome() {
       <About />
       <Skills />
       <Experience />
+      <CaseStudies />
       <Projects />
       <Education />
       <Leadership />

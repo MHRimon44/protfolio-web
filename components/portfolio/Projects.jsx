@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Apple } from "lucide-react";
+import { Apple, CheckCircle2 } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -46,7 +46,6 @@ const Projects = () => {
       id="projects"
       className="py-20 animated-gradient relative overflow-hidden"
     >
-      {/* Background decoration */}
       <div className="absolute top-10 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
 
@@ -63,16 +62,14 @@ const Projects = () => {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-5xl font-bold text-white mb-4">Projects</h2>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Production Projects</h2>
               <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                A showcase of applications I&apos;ve built across various
-                domains
+                Real published and business-facing applications across marketplace, CRM, ERP, logistics, HRM, healthcare, and finance.
               </p>
             </motion.div>
           </div>
 
-          {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {projectCategories.map((category, index) => (
               <motion.div
@@ -84,9 +81,7 @@ const Projects = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  variant={
-                    selectedCategory === category ? "default" : "outline"
-                  }
+                  variant={selectedCategory === category ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category)}
                   className={`${
                     selectedCategory === category
@@ -100,186 +95,161 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* Projects Grid */}
           <motion.div
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredProjects.map((project, index) => {
-              return (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  onHoverStart={() => setHoveredProject(project.id)}
-                  onHoverEnd={() => setHoveredProject(null)}
-                  className="glass rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/40 card-hover glow-cyan group cursor-pointer"
-                >
-                  {/* Project Visual - Abstract Geometric Design */}
-                  <div className="relative h-48 bg-linear-to-br from-ocean-800 to-ocean-900 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {/* Animated background pattern */}
-                      <motion.div
-                        className="absolute inset-0"
-                        animate={
-                          hoveredProject === project.id
-                            ? {
-                                background: [
-                                  "radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%)",
-                                  "radial-gradient(circle at 80% 50%, rgba(20, 184, 166, 0.1) 0%, transparent 50%)",
-                                  "radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%)",
-                                ],
-                              }
-                            : {}
-                        }
-                        transition={{ duration: 2, repeat: Infinity }}
-                      />
+            {filteredProjects.map((project, index) => (
+              <motion.article
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ delay: index * 0.06, duration: 0.5 }}
+                onHoverStart={() => setHoveredProject(project.id)}
+                onHoverEnd={() => setHoveredProject(null)}
+                className="glass rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/40 card-hover glow-cyan group"
+              >
+                <div className="relative h-48 bg-linear-to-br from-ocean-800 to-ocean-900 overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      className="absolute inset-0"
+                      animate={
+                        hoveredProject === project.id
+                          ? {
+                              background: [
+                                "radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%)",
+                                "radial-gradient(circle at 80% 50%, rgba(20, 184, 166, 0.1) 0%, transparent 50%)",
+                                "radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%)",
+                              ],
+                            }
+                          : {}
+                      }
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
 
-                      {/* Icon and geometric shapes */}
-                      <div className="relative z-10 text-center group-hover:scale-110 transition-transform duration-500">
-                        <motion.div
-                          animate={
-                            hoveredProject === project.id
-                              ? { rotate: 360 }
-                              : { rotate: 0 }
-                          }
-                          transition={{ duration: 0.8 }}
-                          className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
-                        >
-                          <Image
-                            src={project.image}
-                            alt={project.name}
-                            width={70}
-                            height={70}
-                            className="object-contain"
-                          />
-                        </motion.div>
-                        <p className="text-sm font-medium text-slate-400 mt-3">
-                          {project.category}
-                        </p>
-                      </div>
-
-                      {/* Decorative elements */}
+                    <div className="relative z-10 text-center group-hover:scale-105 transition-transform duration-500">
                       <motion.div
-                        className="absolute top-4 right-4 w-16 h-16 border-2 border-cyan-500/20 rounded-lg"
-                        animate={{
-                          rotate: hoveredProject === project.id ? 180 : 0,
-                        }}
-                        transition={{ duration: 0.6 }}
-                      />
-                      <motion.div
-                        className="absolute bottom-4 left-4 w-12 h-12 border-2 border-teal-500/20 rounded-full"
-                        animate={{
-                          scale: hoveredProject === project.id ? 1.2 : 1,
-                        }}
-                        transition={{ duration: 0.6 }}
-                      />
-                    </div>
-
-                    {project.featured && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="absolute top-3 right-3 bg-linear-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
+                        animate={hoveredProject === project.id ? { rotate: 360 } : { rotate: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
                       >
-                        Featured
+                        <Image
+                          src={project.image}
+                          alt={project.name}
+                          width={70}
+                          height={70}
+                          className="object-contain"
+                        />
                       </motion.div>
-                    )}
-
-                    {/* Overlay gradient on hover */}
-                    <div className="absolute inset-0 bg-linear-to-t from-ocean-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
-
-                  {/* Project Info */}
-                  <div className="p-6">
-                    <div className="mb-3">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                        {project.name}
-                      </h3>
-                      <p className="text-slate-400 text-sm line-clamp-3">
-                        {project.description}
+                      <p className="text-sm font-medium text-slate-400 mt-3">
+                        {project.category}
                       </p>
                     </div>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.techStack.map((tech, i) => (
-                        <motion.span
-                          key={i}
-                          whileHover={{ scale: 1.1 }}
-                          className="text-xs px-3 py-1 bg-ocean-800 text-cyan-400 rounded-full font-mono border border-cyan-500/20 hover:border-cyan-500/40 transition-all"
-                        >
-                          {tech}
-                        </motion.span>
+                    <motion.div
+                      className="absolute top-4 right-4 w-16 h-16 border-2 border-cyan-500/20 rounded-lg"
+                      animate={{ rotate: hoveredProject === project.id ? 180 : 0 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <motion.div
+                      className="absolute bottom-4 left-4 w-12 h-12 border-2 border-teal-500/20 rounded-full"
+                      animate={{ scale: hoveredProject === project.id ? 1.2 : 1 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </div>
+
+                  {project.featured && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute top-3 right-3 bg-linear-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
+                    >
+                      Featured
+                    </motion.div>
+                  )}
+
+                  <div className="absolute inset-0 bg-linear-to-t from-ocean-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+
+                <div className="p-6">
+                  <div className="mb-4">
+                    <div className="mb-2 flex items-start justify-between gap-3">
+                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                        {project.name}
+                      </h3>
+                    </div>
+                    <p className="mb-2 text-sm font-semibold text-cyan-400">{project.role}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {project.impact && (
+                    <div className="mb-4 rounded-xl border border-cyan-500/15 bg-ocean-900/70 p-3">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-400">Impact</p>
+                      <p className="mt-1 text-sm text-slate-300">{project.impact}</p>
+                    </div>
+                  )}
+
+                  {project.highlights?.length > 0 && (
+                    <div className="mb-4 space-y-2">
+                      {project.highlights.slice(0, 3).map((highlight) => (
+                        <div key={highlight} className="flex items-start gap-2 text-sm text-slate-400">
+                          <CheckCircle2 className="mt-0.5 shrink-0 text-cyan-400" size={16} />
+                          <span>{highlight}</span>
+                        </div>
                       ))}
                     </div>
+                  )}
 
-                    {/* View Details Button */}
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div className="space-y-3">
-                        {(project.playStoreUrl || project.appStoreUrl) && (
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {project.playStoreUrl ? (
-                              <a
-                                href={project.playStoreUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
-                              >
-                                <PlayStoreLogo />
-                                Play Store
-                              </a>
-                            ) : (
-                              <Button
-                                variant="ghost"
-                                disabled
-                                className="w-full border border-cyan-500/20 text-slate-500"
-                              >
-                                Play Store
-                              </Button>
-                            )}
-
-                            {project.appStoreUrl ? (
-                              <a
-                                href={project.appStoreUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
-                              >
-                                <Apple className="mr-2" size={16} />
-                                App Store
-                              </a>
-                            ) : (
-                              <Button
-                                variant="ghost"
-                                disabled
-                                className="w-full border border-cyan-500/20 text-slate-500"
-                              >
-                                App Store
-                              </Button>
-                            )}
-                          </div>
-                        )}
-
-                        {/* <Button
-                          variant="ghost"
-                          className="w-full text-cyan-400 hover:text-white hover:bg-linear-to-r hover:from-cyan-500 hover:to-teal-500 border border-cyan-500/30 hover:border-transparent transition-all"
-                        >
-                          View Details
-                          <ExternalLink className="ml-2" size={16} />
-                        </Button> */}
-                      </div>
-                    </motion.div>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.techStack.map((tech) => (
+                      <motion.span
+                        key={tech}
+                        whileHover={{ scale: 1.05 }}
+                        className="text-xs px-3 py-1 bg-ocean-800 text-cyan-400 rounded-full font-mono border border-cyan-500/20 hover:border-cyan-500/40 transition-all"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
                   </div>
-                </motion.div>
-              );
-            })}
+
+                  {(project.playStoreUrl || project.appStoreUrl) ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {project.playStoreUrl && (
+                        <a
+                          href={project.playStoreUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
+                        >
+                          <PlayStoreLogo />
+                          Play Store
+                        </a>
+                      )}
+
+                      {project.appStoreUrl && (
+                        <a
+                          href={project.appStoreUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
+                        >
+                          <Apple className="mr-2" size={16} />
+                          App Store
+                        </a>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="rounded-md border border-cyan-500/20 bg-ocean-900/70 px-4 py-2 text-center text-sm font-semibold text-slate-400">
+                      Private/internal or README-backed project
+                    </div>
+                  )}
+                </div>
+              </motion.article>
+            ))}
           </motion.div>
 
           {filteredProjects.length === 0 && (
