@@ -33,7 +33,8 @@ const Footer = () => {
               {personalInfo.title}
             </p>
             <p className="text-sm leading-relaxed text-slate-400">
-              Building production-ready mobile applications for business, operations, and customer-facing digital products.
+              Building production-ready mobile applications for business,
+              operations, and customer-facing digital products.
             </p>
           </div>
 
@@ -64,14 +65,20 @@ const Footer = () => {
                 href={`mailto:${personalInfo.email}`}
                 className="flex items-center space-x-2 text-slate-400 hover:text-cyan-400 transition-colors text-sm group"
               >
-                <Mail size={16} className="group-hover:scale-110 transition-transform" />
+                <Mail
+                  size={16}
+                  className="group-hover:scale-110 transition-transform"
+                />
                 <span className="break-all">{personalInfo.email}</span>
               </a>
               <a
                 href={`tel:${personalInfo.phone}`}
                 className="flex items-center space-x-2 text-slate-400 hover:text-cyan-400 transition-colors text-sm group"
               >
-                <Phone size={16} className="group-hover:scale-110 transition-transform" />
+                <Phone
+                  size={16}
+                  className="group-hover:scale-110 transition-transform"
+                />
                 <span>{personalInfo.phone}</span>
               </a>
               <div className="flex items-center space-x-2 text-slate-400 text-sm">
@@ -84,18 +91,24 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="p-2 glass rounded-lg hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
+                  className="p-2 glass rounded-lg hover:bg-liner-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
                 >
-                  <LinkedinIcon size={20} className="text-cyan-400 hover:text-white transition-colors" />
+                  <LinkedinIcon
+                    size={20}
+                    className="text-cyan-400 hover:text-white transition-colors"
+                  />
                 </a>
                 <a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
-                  className="p-2 glass rounded-lg hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
+                  className="p-2 glass rounded-lg hover:bg-liner-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
                 >
-                  <GithubIcon size={20} className="text-cyan-400 hover:text-white transition-colors" />
+                  <GithubIcon
+                    size={20}
+                    className="text-cyan-400 hover:text-white transition-colors"
+                  />
                 </a>
               </div>
             </div>
@@ -108,10 +121,13 @@ const Footer = () => {
           </p>
           <button
             onClick={scrollToTop}
-            className="p-3 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 rounded-full transition-all hover:scale-110 shadow-lg glow-cyan group"
+            className="p-3 bg-liner-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 rounded-full transition-all hover:scale-110 shadow-lg glow-cyan group"
             aria-label="Scroll to top"
           >
-            <ArrowUp size={20} className="group-hover:translate-y-[-4px] transition-transform" />
+            <ArrowUp
+              size={20}
+              className="group-hover:translate-y-[-4px] transition-transform"
+            />
           </button>
         </div>
       </div>

@@ -36,7 +36,8 @@ const CaseStudies = () => {
               </h2>
               <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                A clearer view of the problems, engineering approach, and business value behind my production apps.
+                A clearer view of the problems, engineering approach, and
+                business value behind my production apps.
               </p>
             </motion.div>
           </div>
@@ -66,19 +67,29 @@ const CaseStudies = () => {
 
                 <div className="space-y-5">
                   <div>
-                    <p className="mb-2 text-sm font-semibold text-cyan-400">Problem</p>
-                    <p className="text-sm leading-relaxed text-slate-400">{item.problem}</p>
+                    <p className="mb-2 text-sm font-semibold text-cyan-400">
+                      Problem
+                    </p>
+                    <p className="text-sm leading-relaxed text-slate-400">
+                      {item.problem}
+                    </p>
                   </div>
                   <div>
-                    <p className="mb-2 text-sm font-semibold text-cyan-400">Solution</p>
-                    <p className="text-sm leading-relaxed text-slate-400">{item.solution}</p>
+                    <p className="mb-2 text-sm font-semibold text-cyan-400">
+                      Solution
+                    </p>
+                    <p className="text-sm leading-relaxed text-slate-400">
+                      {item.solution}
+                    </p>
                   </div>
                   <div className="rounded-2xl border border-cyan-500/15 bg-ocean-900/70 p-4">
                     <div className="mb-2 flex items-center gap-2 text-cyan-400">
                       <CheckCircle2 size={18} />
                       <p className="text-sm font-semibold">Result</p>
                     </div>
-                    <p className="text-sm leading-relaxed text-slate-300">{item.result}</p>
+                    <p className="text-sm leading-relaxed text-slate-300">
+                      {item.result}
+                    </p>
                   </div>
                 </div>
 

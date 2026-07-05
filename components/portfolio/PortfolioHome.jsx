@@ -19,7 +19,7 @@ export default function PortfolioHome() {
   }, []);
 
   return (
-    <div className="App min-h-screen bg-[#0a0e27]">
+    <div className="App min-h-screen">
       <Navbar />
       <Hero />
       <About />

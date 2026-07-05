@@ -1,12 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const THEME_STORAGE_KEY = "portfolio-theme";
+const THEME_CHANGE_EVENT = "portfolio-theme-change";
+
+const getSystemTheme = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+
+const getStoredTheme = () => {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    const theme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return theme === "light" || theme === "dark" ? theme : null;
+  } catch {
+    return null;
+  }
+};
+
+const setStoredTheme = (theme) => {
+  try {
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {}
+};
+
+const getPreferredTheme = () => getStoredTheme() ?? getSystemTheme();
+const getServerTheme = () => "dark";
+
+const subscribeToTheme = (onStoreChange) => {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+  const handleChange = () => onStoreChange();
+
+  mediaQuery.addEventListener("change", handleChange);
+  window.addEventListener(THEME_CHANGE_EVENT, handleChange);
+
+  return () => {
+    mediaQuery.removeEventListener("change", handleChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, handleChange);
+  };
+};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getPreferredTheme,
+    getServerTheme,
+  );
 
   // Scroll progress bar
   const { scrollYProgress } = useScroll();
@@ -52,6 +105,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
@@ -70,6 +127,33 @@ const Navbar = () => {
       setIsMobileMenuOpen(false);
     }
   };
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+
+    document.documentElement.dataset.theme = nextTheme;
+    setStoredTheme(nextTheme);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  };
+
+  const ThemeIcon = theme === "dark" ? Sun : Moon;
+  const themeLabel =
+    theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+
+  const renderThemeToggleButton = () => (
+    <motion.button
+      type="button"
+      aria-label={themeLabel}
+      title={themeLabel}
+      aria-pressed={theme === "dark"}
+      onClick={toggleTheme}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:text-white"
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.94 }}
+    >
+      <ThemeIcon size={20} />
+    </motion.button>
+  );
 
   return (
     <>
@@ -132,16 +216,24 @@ const Navbar = () => {
               >
                 Get in Touch
               </Button>
+
+              {renderThemeToggleButton()}
             </div>
 
-            {/* Mobile Button */}
-            <motion.button
-              className="md:hidden p-2 text-cyan-400"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              whileTap={{ scale: 0.9 }}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
+            <div className="flex items-center gap-2 md:hidden">
+              {renderThemeToggleButton()}
+
+              {/* Mobile Button */}
+              <motion.button
+                type="button"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                className="p-2 text-cyan-400"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </motion.button>
+            </div>
           </div>
         </div>
 

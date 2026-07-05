@@ -1,7 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Code2, Wrench, Smartphone, Database, Cloud, Palette } from "lucide-react";
+import {
+  Code2,
+  Wrench,
+  Smartphone,
+  Database,
+  Cloud,
+  Palette,
+} from "lucide-react";
 import { skills } from "@/data/portfolio";
 import { Badge } from "@/components/ui/badge";
 
@@ -76,7 +83,8 @@ const Skills = () => {
               </h2>
               <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Practical tools I use to build release-ready mobile and business applications.
+                Practical tools I use to build release-ready mobile and business
+                applications.
               </p>
             </motion.div>
           </div>
@@ -113,7 +121,7 @@ const Skills = () => {
                           duration: 0.45,
                         }}
                       >
-                        <Badge className="px-4 py-2 text-sm font-medium bg-ocean-800 text-cyan-400 border border-cyan-500/30 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-teal-500 hover:text-white hover:scale-105 transition-all cursor-default">
+                        <Badge className="skill-badge px-4 py-2 text-sm font-medium bg-ocean-800 text-cyan-400 border border-cyan-500/30 hover:bg-liner-to-r hover:from-cyan-500 hover:to-teal-500 hover:text-white hover:scale-105 transition-all cursor-default">
                           {skill}
                         </Badge>
                       </motion.div>

@@ -62,10 +62,13 @@ const Projects = () => {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Production Projects</h2>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+                Production Projects
+              </h2>
               <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Real published and business-facing applications across marketplace, CRM, ERP, logistics, HRM, healthcare, and finance.
+                Real published and business-facing applications across
+                marketplace, CRM, ERP, logistics, HRM, healthcare, and finance.
               </p>
             </motion.div>
           </div>
@@ -81,7 +84,9 @@ const Projects = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
                   onClick={() => setSelectedCategory(category)}
                   className={`${
                     selectedCategory === category
@@ -131,7 +136,11 @@ const Projects = () => {
 
                     <div className="relative z-10 text-center group-hover:scale-105 transition-transform duration-500">
                       <motion.div
-                        animate={hoveredProject === project.id ? { rotate: 360 } : { rotate: 0 }}
+                        animate={
+                          hoveredProject === project.id
+                            ? { rotate: 360 }
+                            : { rotate: 0 }
+                        }
                         transition={{ duration: 0.8 }}
                         className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
                       >
@@ -140,7 +149,7 @@ const Projects = () => {
                           alt={project.name}
                           width={70}
                           height={70}
-                          className="object-contain"
+                          className="object-contain rounded-xl"
                         />
                       </motion.div>
                       <p className="text-sm font-medium text-slate-400 mt-3">
@@ -150,12 +159,16 @@ const Projects = () => {
 
                     <motion.div
                       className="absolute top-4 right-4 w-16 h-16 border-2 border-cyan-500/20 rounded-lg"
-                      animate={{ rotate: hoveredProject === project.id ? 180 : 0 }}
+                      animate={{
+                        rotate: hoveredProject === project.id ? 180 : 0,
+                      }}
                       transition={{ duration: 0.6 }}
                     />
                     <motion.div
                       className="absolute bottom-4 left-4 w-12 h-12 border-2 border-teal-500/20 rounded-full"
-                      animate={{ scale: hoveredProject === project.id ? 1.2 : 1 }}
+                      animate={{
+                        scale: hoveredProject === project.id ? 1.2 : 1,
+                      }}
                       transition={{ duration: 0.6 }}
                     />
                   </div>
@@ -180,7 +193,9 @@ const Projects = () => {
                         {project.name}
                       </h3>
                     </div>
-                    <p className="mb-2 text-sm font-semibold text-cyan-400">{project.role}</p>
+                    <p className="mb-2 text-sm font-semibold text-cyan-400">
+                      {project.role}
+                    </p>
                     <p className="text-slate-400 text-sm leading-relaxed">
                       {project.description}
                     </p>
@@ -188,16 +203,26 @@ const Projects = () => {
 
                   {project.impact && (
                     <div className="mb-4 rounded-xl border border-cyan-500/15 bg-ocean-900/70 p-3">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-400">Impact</p>
-                      <p className="mt-1 text-sm text-slate-300">{project.impact}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-400">
+                        Impact
+                      </p>
+                      <p className="mt-1 text-sm text-slate-300">
+                        {project.impact}
+                      </p>
                     </div>
                   )}
 
                   {project.highlights?.length > 0 && (
                     <div className="mb-4 space-y-2">
                       {project.highlights.slice(0, 3).map((highlight) => (
-                        <div key={highlight} className="flex items-start gap-2 text-sm text-slate-400">
-                          <CheckCircle2 className="mt-0.5 shrink-0 text-cyan-400" size={16} />
+                        <div
+                          key={highlight}
+                          className="flex items-start gap-2 text-sm text-slate-400"
+                        >
+                          <CheckCircle2
+                            className="mt-0.5 shrink-0 text-cyan-400"
+                            size={16}
+                          />
                           <span>{highlight}</span>
                         </div>
                       ))}
@@ -216,7 +241,7 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {(project.playStoreUrl || project.appStoreUrl) ? (
+                  {project.playStoreUrl || project.appStoreUrl ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {project.playStoreUrl && (
                         <a

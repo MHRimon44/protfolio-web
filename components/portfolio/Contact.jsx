@@ -2,7 +2,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
 import { personalInfo } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
@@ -31,13 +38,17 @@ const Contact = () => {
   const validateField = (name, value) => {
     switch (name) {
       case "name":
-        return value.trim().length < 2 ? "Name must be at least 2 characters" : "";
+        return value.trim().length < 2
+          ? "Name must be at least 2 characters"
+          : "";
       case "email":
         return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
           ? "Please enter a valid email"
           : "";
       case "message":
-        return value.trim().length < 10 ? "Message must be at least 10 characters" : "";
+        return value.trim().length < 10
+          ? "Message must be at least 10 characters"
+          : "";
       default:
         return "";
     }
@@ -61,7 +72,9 @@ const Contact = () => {
   };
 
   const openMailClient = () => {
-    const subject = encodeURIComponent(`Portfolio inquiry from ${formData.name}`);
+    const subject = encodeURIComponent(
+      `Portfolio inquiry from ${formData.name}`,
+    );
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
     );
@@ -105,14 +118,16 @@ const Contact = () => {
 
         toast({
           title: "Message sent",
-          description: "Thank you for contacting me. I will get back to you soon.",
+          description:
+            "Thank you for contacting me. I will get back to you soon.",
           className: "bg-emerald-600 border-emerald-700 text-white",
         });
       } else {
         openMailClient();
         toast({
           title: "Email app opened",
-          description: "EmailJS is not configured, so your message was prepared in your email client.",
+          description:
+            "EmailJS is not configured, so your message was prepared in your email client.",
           className: "bg-cyan-600 border-cyan-700 text-white",
         });
       }
@@ -146,7 +161,10 @@ const Contact = () => {
     }`;
 
   return (
-    <section id="contact" className="py-20 bg-ocean-950 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-20 bg-ocean-950 relative overflow-hidden"
+    >
       <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
       <div
         className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl animate-pulse"
@@ -166,10 +184,13 @@ const Contact = () => {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Contact</h2>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+                Contact
+              </h2>
+              <div className="w-24 h-1.5 bg-liner-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Need a production mobile app, app improvement, or React Native support? Let&apos;s talk.
+                Need a production mobile app, app improvement, or React Native
+                support? Let&apos;s talk.
               </p>
             </motion.div>
           </div>
@@ -182,9 +203,13 @@ const Contact = () => {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Get in Touch</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Get in Touch
+                </h3>
                 <p className="text-slate-300 leading-relaxed">
-                  I am open to mobile app development roles, production React Native work, and business app improvements across e-commerce, ERP, CRM, POS, and logistics systems.
+                  I am open to mobile app development roles, production React
+                  Native work, and business app improvements across e-commerce,
+                  ERP, CRM, POS, and logistics systems.
                 </p>
               </div>
 
@@ -199,7 +224,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-slate-400">Email</p>
-                    <p className="font-semibold text-white break-all">{personalInfo.email}</p>
+                    <p className="font-semibold text-white break-all">
+                      {personalInfo.email}
+                    </p>
                   </div>
                 </motion.a>
 
@@ -213,7 +240,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-slate-400">Phone</p>
-                    <p className="font-semibold text-white">{personalInfo.phone}</p>
+                    <p className="font-semibold text-white">
+                      {personalInfo.phone}
+                    </p>
                   </div>
                 </motion.a>
 
@@ -226,13 +255,17 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-sm text-slate-400">Location</p>
-                    <p className="font-semibold text-white">{personalInfo.location}</p>
+                    <p className="font-semibold text-white">
+                      {personalInfo.location}
+                    </p>
                   </div>
                 </motion.div>
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Connect With Me</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Connect With Me
+                </h3>
                 <div className="flex space-x-4">
                   <motion.a
                     href={personalInfo.linkedin}
@@ -270,7 +303,10 @@ const Contact = () => {
                 className="glass rounded-2xl p-8 border border-cyan-500/20 space-y-6"
               >
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-slate-300 mb-2"
+                  >
                     Your Name *
                   </label>
                   <div className="relative">
@@ -285,17 +321,28 @@ const Contact = () => {
                       className={inputClass("name")}
                     />
                     {getFieldStatus("name") === "success" && (
-                      <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400" size={20} />
+                      <CheckCircle2
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400"
+                        size={20}
+                      />
                     )}
                     {getFieldStatus("name") === "error" && (
-                      <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400" size={20} />
+                      <AlertCircle
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400"
+                        size={20}
+                      />
                     )}
                   </div>
-                  {errors.name && touched.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
+                  {errors.name && touched.name && (
+                    <p className="text-red-400 text-sm mt-1">{errors.name}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-slate-300 mb-2"
+                  >
                     Your Email *
                   </label>
                   <div className="relative">
@@ -310,17 +357,28 @@ const Contact = () => {
                       className={inputClass("email")}
                     />
                     {getFieldStatus("email") === "success" && (
-                      <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400" size={20} />
+                      <CheckCircle2
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400"
+                        size={20}
+                      />
                     )}
                     {getFieldStatus("email") === "error" && (
-                      <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400" size={20} />
+                      <AlertCircle
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400"
+                        size={20}
+                      />
                     )}
                   </div>
-                  {errors.email && touched.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+                  {errors.email && touched.email && (
+                    <p className="text-red-400 text-sm mt-1">{errors.email}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-slate-300 mb-2"
+                  >
                     Your Message *
                   </label>
                   <Textarea
@@ -333,10 +391,17 @@ const Contact = () => {
                     rows={6}
                     className={`${inputClass("message")} resize-none`}
                   />
-                  {errors.message && touched.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
+                  {errors.message && touched.message && (
+                    <p className="text-red-400 text-sm mt-1">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Button
                     type="submit"
                     size="lg"
@@ -347,7 +412,11 @@ const Contact = () => {
                       <>
                         <motion.div
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                           className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
                         />
                         Sending...

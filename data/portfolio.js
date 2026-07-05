@@ -9,6 +9,12 @@ import saleImg from "@/assets/projectImage/sale.webp";
 import saraImg from "@/assets/projectImage/sara.webp";
 import invoiceImg from "@/assets/projectImage/invoice.webp";
 import cmrImg from "@/assets/projectImage/cmr.png";
+import notifyImage from "@/assets/projectImage/notify.avif";
+import dcposImg from "@/assets/projectImage/dcpos.jpg";
+import shopposImg from "@/assets/projectImage/shoppos.png";
+import transportImg from "@/assets/projectImage/transport.png";
+import symbolImg from "@/assets/projectImage/symbol.png";
+import fastApiImg from "@/assets/projectImage/fastApi.png";
 
 export const personalInfo = {
   name: "MD Mehedi Hasan",
@@ -227,7 +233,7 @@ export const projects = [
       "op-sqlite",
       "RTK Query",
     ],
-    image: erpImg,
+    image: notifyImage,
     featured: true,
     caseStudy: true,
     playStoreUrl: "",
@@ -255,7 +261,7 @@ export const projects = [
       "Kotlin",
       "Vision Camera",
     ],
-    image: invoiceImg,
+    image: dcposImg,
     featured: true,
     caseStudy: true,
     playStoreUrl: "",
@@ -263,7 +269,7 @@ export const projects = [
   },
   {
     id: 4,
-    name: "Snowtex Shop POS / Shop Bill",
+    name: "Snowtex Shop POS",
     category: "POS",
     role: "React Native Developer",
     description:
@@ -283,7 +289,7 @@ export const projects = [
       "MMKV",
       "Kotlin",
     ],
-    image: invoiceImg,
+    image: shopposImg,
     featured: true,
     caseStudy: true,
     playStoreUrl: "",
@@ -544,7 +550,7 @@ export const projects = [
       "AsyncStorage",
       "Drawer Navigation",
     ],
-    image: deliveryImg,
+    image: transportImg,
     featured: false,
     caseStudy: false,
     playStoreUrl: "",
@@ -630,7 +636,7 @@ export const projects = [
       "Image Upload",
       "Local Storage",
     ],
-    image: cmrImg,
+    image: symbolImg,
     featured: false,
     caseStudy: true,
     playStoreUrl: "",
@@ -638,7 +644,7 @@ export const projects = [
   },
   {
     id: 17,
-    name: "Symbol Library FastAPI Backend",
+    name: "Resilience Manitoba FastAPI Backend",
     category: "Web/Backend",
     role: "Backend Developer",
     description:
@@ -658,7 +664,7 @@ export const projects = [
       "SQLAlchemy",
       "OpenCLIP",
     ],
-    image: crmImg,
+    image: symbolImg,
     featured: true,
     caseStudy: true,
     playStoreUrl: "",
@@ -666,7 +672,7 @@ export const projects = [
   },
   {
     id: 18,
-    name: "Symbol Library Admin",
+    name: "Resilience Manitoba Admin",
     category: "Web/Backend",
     role: "Frontend Developer",
     description:
@@ -686,7 +692,7 @@ export const projects = [
       "Axios",
       "Tailwind",
     ],
-    image: crmImg,
+    image: symbolImg,
     featured: false,
     caseStudy: false,
     playStoreUrl: "",
@@ -714,7 +720,7 @@ export const projects = [
       "pytest",
       "Docker",
     ],
-    image: erpImg,
+    image: fastApiImg,
     featured: false,
     caseStudy: false,
     playStoreUrl: "",
