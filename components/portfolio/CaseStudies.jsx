@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ArrowRight, CheckCircle2, Layers3 } from "lucide-react";
+import { CheckCircle2, Layers3 } from "lucide-react";
 import { caseStudies } from "@/data/portfolio";
 
 const CaseStudies = () => {

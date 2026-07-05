@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Apple, CheckCircle2 } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-
-const INITIAL_PROJECT_COUNT = 9;
 
 const PlayStoreLogo = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className="mr-2 h-4 w-4 shrink-0">
@@ -31,12 +30,12 @@ const PlayStoreLogo = () => (
 );
 
 const Projects = () => {
+  const lastFeaturedProjectRef = useRef(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [hoveredProject, setHoveredProject] = useState(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
 
   const filteredProjects =
@@ -46,11 +45,72 @@ const Projects = () => {
   const sortedProjects = [...filteredProjects].sort(
     (a, b) => Number(b.featured) - Number(a.featured),
   );
+  const featuredProjects = sortedProjects.filter((project) => project.featured);
   const visibleProjects =
     selectedCategory === "All" && !showAllProjects
-      ? sortedProjects.slice(0, INITIAL_PROJECT_COUNT)
+      ? featuredProjects
       : sortedProjects;
   const hiddenProjectCount = sortedProjects.length - visibleProjects.length;
+  const lastFeaturedProjectId =
+    featuredProjects[featuredProjects.length - 1]?.id;
+
+  const scrollToLastFeaturedProject = () => {
+    const element = lastFeaturedProjectRef.current;
+
+    if (!element) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const top = element.getBoundingClientRect().top + window.scrollY - 88;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  };
+
+  const scrollWithoutAnimation = (top) => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    const previousHtmlScrollBehavior = html.style.scrollBehavior;
+    const previousBodyScrollBehavior = body.style.scrollBehavior;
+
+    html.style.scrollBehavior = "auto";
+    body.style.scrollBehavior = "auto";
+
+    window.scrollTo({
+      top,
+      behavior: "auto",
+    });
+
+    window.requestAnimationFrame(() => {
+      html.style.scrollBehavior = previousHtmlScrollBehavior;
+      body.style.scrollBehavior = previousBodyScrollBehavior;
+    });
+  };
+
+  const toggleProjectList = () => {
+    if (!showAllProjects) {
+      const currentScrollY = window.scrollY;
+
+      flushSync(() => {
+        setShowAllProjects(true);
+      });
+
+      // Show All Projects: no animation / no smooth scroll
+      scrollWithoutAnimation(currentScrollY);
+      return;
+    }
+
+    // Show Featured Projects: keep existing smooth animation
+    setShowAllProjects(false);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(scrollToLastFeaturedProject);
+    });
+  };
 
   return (
     <section
@@ -114,50 +174,22 @@ const Projects = () => {
             ))}
           </div>
 
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {visibleProjects.map((project, index) => (
-              <motion.article
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [overflow-anchor:none]">
+            {visibleProjects.map((project) => (
+              <article
                 key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ delay: index * 0.06, duration: 0.5 }}
-                onHoverStart={() => setHoveredProject(project.id)}
-                onHoverEnd={() => setHoveredProject(null)}
-                className="glass rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-500/40 card-hover glow-cyan group"
+                ref={
+                  selectedCategory === "All" &&
+                  project.id === lastFeaturedProjectId
+                    ? lastFeaturedProjectRef
+                    : null
+                }
+                className="glass rounded-2xl overflow-hidden border border-cyan-500/20"
               >
                 <div className="relative h-48 bg-linear-to-br from-ocean-800 to-ocean-900 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      className="absolute inset-0"
-                      animate={
-                        hoveredProject === project.id
-                          ? {
-                              background: [
-                                "radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%)",
-                                "radial-gradient(circle at 80% 50%, rgba(20, 184, 166, 0.1) 0%, transparent 50%)",
-                                "radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%)",
-                              ],
-                            }
-                          : {}
-                      }
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-
-                    <div className="relative z-10 text-center group-hover:scale-105 transition-transform duration-500">
-                      <motion.div
-                        animate={
-                          hoveredProject === project.id
-                            ? { rotate: 360 }
-                            : { rotate: 0 }
-                        }
-                        transition={{ duration: 0.8 }}
-                        className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30"
-                      >
+                    <div className="relative z-10 text-center">
+                      <div className="inline-block p-6 bg-linear-to-br from-cyan-500/20 to-teal-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30">
                         <Image
                           src={project.image}
                           alt={project.name}
@@ -165,45 +197,24 @@ const Projects = () => {
                           height={70}
                           className="object-contain rounded-xl"
                         />
-                      </motion.div>
+                      </div>
                       <p className="text-sm font-medium text-slate-400 mt-3">
                         {project.category}
                       </p>
                     </div>
-
-                    <motion.div
-                      className="absolute top-4 right-4 w-16 h-16 border-2 border-cyan-500/20 rounded-lg"
-                      animate={{
-                        rotate: hoveredProject === project.id ? 180 : 0,
-                      }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <motion.div
-                      className="absolute bottom-4 left-4 w-12 h-12 border-2 border-teal-500/20 rounded-full"
-                      animate={{
-                        scale: hoveredProject === project.id ? 1.2 : 1,
-                      }}
-                      transition={{ duration: 0.6 }}
-                    />
                   </div>
 
                   {project.featured && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute top-3 right-3 bg-linear-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg"
-                    >
+                    <div className="absolute top-3 right-3 bg-linear-to-r from-cyan-500 to-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
                       Featured
-                    </motion.div>
+                    </div>
                   )}
-
-                  <div className="absolute inset-0 bg-linear-to-t from-ocean-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
 
                 <div className="p-6">
                   <div className="mb-4">
                     <div className="mb-2 flex items-start justify-between gap-3">
-                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-xl font-bold text-white">
                         {project.name}
                       </h3>
                     </div>
@@ -245,13 +256,12 @@ const Projects = () => {
 
                   <div className="flex flex-wrap gap-2 mb-5">
                     {project.techStack.map((tech) => (
-                      <motion.span
+                      <span
                         key={tech}
-                        whileHover={{ scale: 1.05 }}
-                        className="text-xs px-3 py-1 bg-ocean-800 text-cyan-400 rounded-full font-mono border border-cyan-500/20 hover:border-cyan-500/40 transition-all"
+                        className="text-xs px-3 py-1 bg-ocean-800 text-cyan-400 rounded-full font-mono border border-cyan-500/20"
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
 
@@ -287,17 +297,17 @@ const Projects = () => {
                     </div>
                   )}
                 </div>
-              </motion.article>
+              </article>
             ))}
-          </motion.div>
+          </div>
 
           {selectedCategory === "All" &&
-            sortedProjects.length > INITIAL_PROJECT_COUNT && (
-              <div className="mt-12 flex justify-center">
+            sortedProjects.length > featuredProjects.length && (
+              <div className="mt-12 flex justify-center [overflow-anchor:none]">
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => setShowAllProjects((current) => !current)}
+                  onClick={toggleProjectList}
                   className="glass border-cyan-500/30 text-cyan-400 hover:border-cyan-500 hover:bg-cyan-500/10"
                 >
                   {showAllProjects
