@@ -80,7 +80,7 @@ const About = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="relative"
             >
-              <div className="bg-liner-to-br from-ocean-800 to-ocean-900 rounded-2xl p-8 shadow-2xl glow-cyan border border-cyan-500/20">
+              <div className="bg-linear-to-br from-ocean-800 to-ocean-900 rounded-2xl p-8 shadow-2xl glow-cyan border border-cyan-500/20">
                 <h3 className="text-3xl font-bold gradient-text mb-6">
                   Core Competencies
                 </h3>

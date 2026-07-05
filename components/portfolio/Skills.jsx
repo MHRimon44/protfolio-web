@@ -121,7 +121,7 @@ const Skills = () => {
                           duration: 0.45,
                         }}
                       >
-                        <Badge className="skill-badge px-4 py-2 text-sm font-medium bg-ocean-800 text-cyan-400 border border-cyan-500/30 hover:bg-liner-to-r hover:from-cyan-500 hover:to-teal-500 hover:text-white hover:scale-105 transition-all cursor-default">
+                        <Badge className="skill-badge px-4 py-2 text-sm font-medium bg-ocean-800 text-cyan-400 border border-cyan-500/30 hover:bg-linear-to-r hover:from-cyan-500 hover:to-teal-500 hover:text-white hover:scale-105 transition-all cursor-default">
                           {skill}
                         </Badge>
                       </motion.div>

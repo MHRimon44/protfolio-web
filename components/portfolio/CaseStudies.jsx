@@ -103,11 +103,6 @@ const CaseStudies = () => {
                     </span>
                   ))}
                 </div>
-
-                <div className="mt-6 flex items-center text-sm font-semibold text-cyan-400">
-                  Production-oriented engineering
-                  <ArrowRight className="ml-2" size={16} />
-                </div>
               </motion.article>
             ))}
           </div>

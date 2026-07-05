@@ -6,6 +6,8 @@ import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+const INITIAL_PROJECT_COUNT = 9;
+
 const PlayStoreLogo = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className="mr-2 h-4 w-4 shrink-0">
     <path d="M3.5 2.5v19l9.2-9.1z" fill="#00d9ff" />
@@ -35,11 +37,20 @@ const Projects = () => {
   });
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const filteredProjects =
     selectedCategory === "All"
       ? projects
       : projects.filter((project) => project.category === selectedCategory);
+  const sortedProjects = [...filteredProjects].sort(
+    (a, b) => Number(b.featured) - Number(a.featured),
+  );
+  const visibleProjects =
+    selectedCategory === "All" && !showAllProjects
+      ? sortedProjects.slice(0, INITIAL_PROJECT_COUNT)
+      : sortedProjects;
+  const hiddenProjectCount = sortedProjects.length - visibleProjects.length;
 
   return (
     <section
@@ -87,7 +98,10 @@ const Projects = () => {
                   variant={
                     selectedCategory === category ? "default" : "outline"
                   }
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setShowAllProjects(false);
+                  }}
                   className={`${
                     selectedCategory === category
                       ? "bg-linear-to-r from-cyan-500 to-teal-500 text-white shadow-lg glow-cyan"
@@ -104,7 +118,7 @@ const Projects = () => {
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredProjects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <motion.article
                 key={project.id}
                 layout
@@ -269,7 +283,7 @@ const Projects = () => {
                     </div>
                   ) : (
                     <div className="rounded-md border border-cyan-500/20 bg-ocean-900/70 px-4 py-2 text-center text-sm font-semibold text-slate-400">
-                      Private/internal or README-backed project
+                      Private/internal project
                     </div>
                   )}
                 </div>
@@ -277,7 +291,23 @@ const Projects = () => {
             ))}
           </motion.div>
 
-          {filteredProjects.length === 0 && (
+          {selectedCategory === "All" &&
+            sortedProjects.length > INITIAL_PROJECT_COUNT && (
+              <div className="mt-12 flex justify-center">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setShowAllProjects((current) => !current)}
+                  className="glass border-cyan-500/30 text-cyan-400 hover:border-cyan-500 hover:bg-cyan-500/10"
+                >
+                  {showAllProjects
+                    ? "Show Featured Projects"
+                    : `Show All Projects (${hiddenProjectCount} more)`}
+                </Button>
+              </div>
+            )}
+
+          {visibleProjects.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

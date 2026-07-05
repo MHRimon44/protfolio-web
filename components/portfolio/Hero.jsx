@@ -239,11 +239,8 @@ const Hero = () => {
           >
             <div className="glass rounded-3xl border border-cyan-500/25 p-6 shadow-2xl glow-cyan">
               <div className="mb-6 rounded-2xl border border-cyan-500/20 bg-ocean-900 p-6 text-center">
-                <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-linear-to-br from-cyan-500 to-teal-500 text-3xl font-extrabold text-white shadow-xl glow-cyan-strong">
-                  MH
-                </div>
                 <h2 className="text-2xl font-bold text-white">
-                  Mobile & Business App Engineer
+                  Mobile App Developer | Software Engineer
                 </h2>
                 <p className="mt-2 text-sm text-slate-400">
                   16+ projects across mobile, POS, enterprise, and backend

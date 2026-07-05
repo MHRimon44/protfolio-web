@@ -15,7 +15,13 @@ import Footer from "@/components/portfolio/Footer";
 
 export default function PortfolioHome() {
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    document.documentElement.style.scrollBehavior = reducedMotion
+      ? "auto"
+      : "smooth";
   }, []);
 
   return (

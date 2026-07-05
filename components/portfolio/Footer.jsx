@@ -91,7 +91,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="p-2 glass rounded-lg hover:bg-liner-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
+                  className="p-2 glass rounded-lg hover:bg-linear-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
                 >
                   <LinkedinIcon
                     size={20}
@@ -103,7 +103,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
-                  className="p-2 glass rounded-lg hover:bg-liner-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
+                  className="p-2 glass rounded-lg hover:bg-linear-to-r hover:from-cyan-500 hover:to-teal-500 transition-all hover:scale-110 border border-cyan-500/30"
                 >
                   <GithubIcon
                     size={20}
@@ -121,7 +121,7 @@ const Footer = () => {
           </p>
           <button
             onClick={scrollToTop}
-            className="p-3 bg-liner-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 rounded-full transition-all hover:scale-110 shadow-lg glow-cyan group"
+            className="p-3 bg-linear-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 rounded-full transition-all hover:scale-110 shadow-lg glow-cyan group"
             aria-label="Scroll to top"
           >
             <ArrowUp

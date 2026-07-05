@@ -187,7 +187,7 @@ const Contact = () => {
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
                 Contact
               </h2>
-              <div className="w-24 h-1.5 bg-liner-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
+              <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
                 Need a production mobile app, app improvement, or React Native
                 support? Let&apos;s talk.

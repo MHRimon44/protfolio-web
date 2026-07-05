@@ -197,6 +197,7 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => scrollToSection(e, link.href)}
+                    aria-current={isActive ? "page" : undefined}
                     className={`text-sm font-medium relative ${
                       isActive
                         ? "text-cyan-400"

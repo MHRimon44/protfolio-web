@@ -16,9 +16,26 @@ import transportImg from "@/assets/projectImage/transport.png";
 import symbolImg from "@/assets/projectImage/symbol.png";
 import fastApiImg from "@/assets/projectImage/fastApi.png";
 
+/**
+ * @typedef {Object} PortfolioProject
+ * @property {number} id
+ * @property {string} name
+ * @property {string} category
+ * @property {string} role
+ * @property {string} description
+ * @property {string} impact
+ * @property {string[]} highlights
+ * @property {string[]} techStack
+ * @property {import("next/image").StaticImageData} image
+ * @property {boolean} featured
+ * @property {boolean} caseStudy
+ * @property {string} playStoreUrl
+ * @property {string} appStoreUrl
+ */
+
 export const personalInfo = {
   name: "MD Mehedi Hasan",
-  title: "Software Engineer | React Native Mobile Engineer",
+  title: "Software Engineer | Mobile App Developer",
   subtitle: "Production Mobile & Business App Developer",
   tagline:
     "I build real Android and iOS business applications across e-commerce, POS, ERP, CRM, HRM, logistics, notifications, finance, and education workflows.",
@@ -180,6 +197,7 @@ export const experience = [
   },
 ];
 
+/** @type {PortfolioProject[]} */
 export const projects = [
   {
     id: 1,
@@ -435,7 +453,7 @@ export const projects = [
       "NativeWind",
     ],
     image: frescoImg,
-    featured: true,
+    featured: false,
     caseStudy: false,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.segasoftbd.fresco&pcampaignid=web_share",
@@ -464,7 +482,7 @@ export const projects = [
       "NativeWind",
     ],
     image: abmImg,
-    featured: false,
+    featured: true,
     caseStudy: false,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.segasoftbd.abminimercado&pcampaignid=web_share",
@@ -501,7 +519,7 @@ export const projects = [
   },
   {
     id: 12,
-    name: "Sale / POS Express",
+    name: "Sale",
     category: "POS",
     role: "Mobile App Developer",
     description:
@@ -551,7 +569,7 @@ export const projects = [
       "Drawer Navigation",
     ],
     image: transportImg,
-    featured: false,
+    featured: true,
     caseStudy: false,
     playStoreUrl: "",
     appStoreUrl: "",
@@ -608,7 +626,7 @@ export const projects = [
       "PDF",
     ],
     image: cmrImg,
-    featured: true,
+    featured: false,
     caseStudy: false,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.theicthub.Navigation&pcampaignid=web_share",
@@ -637,7 +655,7 @@ export const projects = [
       "Local Storage",
     ],
     image: symbolImg,
-    featured: false,
+    featured: true,
     caseStudy: true,
     playStoreUrl: "",
     appStoreUrl: "",
@@ -665,7 +683,7 @@ export const projects = [
       "OpenCLIP",
     ],
     image: symbolImg,
-    featured: true,
+    featured: false,
     caseStudy: true,
     playStoreUrl: "",
     appStoreUrl: "",

@@ -1,6 +1,6 @@
 # Portfolio
 
-A single-page developer portfolio built with Next.js. It presents sections for hero, about, skills, experience, projects, education, leadership, and contact, with motion and a dark ocean/cyan theme.
+A single-page developer portfolio built with Next.js. It presents sections for hero, about, skills, experience, case studies, projects, education, leadership, and contact, with motion and an ocean/cyan theme that supports light and dark modes.
 
 ## Tech stack
 
@@ -23,7 +23,7 @@ Install dependencies:
 npm install
 ```
 
-Run the development server (with Turbopack by default in this Next.js setup):
+Run the development server:
 
 ```bash
 npm run dev
@@ -31,20 +31,32 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+Webpack is the default local mode for this project. If you want to try Turbopack explicitly:
+
+```bash
+npm run dev:turbo
+```
+
 ## Scripts
 
 | Command       | Description                          |
 | ------------- | ------------------------------------ |
-| `npm run dev` | Start dev server with hot reload     |
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start dev server with webpack hot reload |
+| `npm run dev:turbo` | Start dev server with Turbopack |
 | `npm run build` | Create an optimized production build |
-| `npm start`   | Run the production server (after `build`) |
-| `npm run lint` | Run ESLint                         |
+| `npm run build:turbo` | Create a Turbopack production build |
+| `npm start` | Run the production server after `build` |
+| `npm run lint` | Run ESLint |
 
 ## Customizing content
 
 Most copy and structured data live in **`data/portfolio.js`** (personal info, about text, skills, jobs, projects, education, etc.). Edit that file to update names, links, and project entries without touching layout code.
 
 Styling tokens and utilities are in **`app/globals.css`**. Section components are under **`components/portfolio/`**.
+
+For the contact form, copy `.env.example` to `.env.local` and add your EmailJS values. Without those values, the form falls back to opening the visitor's email app.
 
 ## Project layout (high level)
 
