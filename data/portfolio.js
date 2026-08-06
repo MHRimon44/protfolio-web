@@ -50,7 +50,7 @@ export const personalInfo = {
   projectsCompleted: 19,
   stats: [
     { value: 2, suffix: "+", label: "Years Experience" },
-    { value: 16, suffix: "+", label: "Mobile App Projects" },
+    { value: 15, suffix: "+", label: "Mobile App Projects" },
     { value: 10, suffix: "+", label: "Business Domains" },
   ],
   focusAreas: [
@@ -66,7 +66,7 @@ export const about = {
   summary:
     "I am a software engineer focused on production React Native mobile applications. My project work covers marketplace apps, POS and invoice systems, CRM and sales-force tools, ERP and HRM operations, delivery-agent workflows, employee notification systems, finance dashboards, healthcare learning modules, and symbol-awareness education platforms. I work with API-first architecture, Redux Toolkit/RTK Query, local persistence, native device features, and release-ready mobile UX for real business processes.",
   highlights: [
-    "16+ mobile projects across React Native CLI and Expo ecosystems",
+    "15+ mobile projects across React Native CLI and Expo ecosystems",
     "Strong experience with Redux Toolkit, RTK Query, SQLite, MMKV, AsyncStorage, and local-first workflows",
     "Hands-on work with payment flows, push notifications, barcode scanning, thermal printing, location tracking, PDF generation, and app releases",
     "Additional full-stack exposure through React/Vite admin dashboards and FastAPI/PostgreSQL/vector-search backend projects",

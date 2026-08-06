@@ -243,7 +243,7 @@ const Hero = () => {
                   Mobile App Developer | Software Engineer
                 </h2>
                 <p className="mt-2 text-sm text-slate-400">
-                  16+ projects across mobile, POS, enterprise, and backend
+                  15+ projects across mobile, POS, enterprise, and backend
                   workflows
                 </p>
               </div>
