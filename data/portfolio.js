@@ -35,14 +35,14 @@ import fastApiImg from "@/assets/projectImage/fastApi.png";
 
 export const personalInfo = {
   name: "MD Mehedi Hasan",
-  title: "Software Engineer | Mobile App Developer",
+  title: "React Native Developer | Offline-First Mobile Apps",
   subtitle: "Production Mobile & Business App Developer",
   tagline:
     "I build real Android and iOS business applications across e-commerce, POS, ERP, CRM, HRM, logistics, notifications, finance, and education workflows.",
   location: "Dhaka, Bangladesh",
   email: "mehedihasanrimon01@gmail.com",
   phone: "+8801792085854",
-  linkedin: "https://www.linkedin.com/in/mehedi-hasan-7222122b2/",
+  linkedin: "https://www.linkedin.com/in/hasanmehedi-dev/",
   github: "https://github.com/MHRimon44",
   resumeUrl:
     "https://drive.google.com/file/d/1Y2GK4ffFKYBu5uagPl8AO3Y_0FYL9HZa/view?usp=drive_link",

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "MD Mehedi Hasan",
-      url: "https://www.linkedin.com/in/mehedi-hasan-7222122b2/",
+      url: "https://www.linkedin.com/in/hasanmehedi-dev/",
     },
   ],
   creator: "MD Mehedi Hasan",
