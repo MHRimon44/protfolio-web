@@ -74,7 +74,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden animated-gradient pt-20"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden animated-gradient pt-2"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
