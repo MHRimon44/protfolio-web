@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Apple, CheckCircle2 } from "lucide-react";
+import { Apple, CheckCircle2, Download } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -138,8 +138,9 @@ const Projects = () => {
               </h2>
               <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Real published and business-facing applications across
-                marketplace, CRM, ERP, logistics, HRM, healthcare, and finance.
+                Published apps, independent tools, and business applications
+                across productivity, marketplace, CRM, ERP, logistics, HRM,
+                healthcare, and finance.
               </p>
             </motion.div>
           </div>
@@ -265,7 +266,9 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {project.playStoreUrl || project.appStoreUrl ? (
+                  {project.playStoreUrl ||
+                  project.appStoreUrl ||
+                  project.apkUrl ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {project.playStoreUrl && (
                         <a
@@ -276,6 +279,19 @@ const Projects = () => {
                         >
                           <PlayStoreLogo />
                           Play Store
+                        </a>
+                      )}
+
+                      {project.apkUrl && (
+                        <a
+                          href={project.apkUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Download ${project.name} Android APK (opens in a new tab)`}
+                          className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
+                        >
+                          <Download className="mr-2" size={16} />
+                          Android APK
                         </a>
                       )}
 

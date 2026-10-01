@@ -15,6 +15,7 @@ import shopposImg from "@/assets/projectImage/shoppos.png";
 import transportImg from "@/assets/projectImage/transport.png";
 import symbolImg from "@/assets/projectImage/symbol.png";
 import fastApiImg from "@/assets/projectImage/fastApi.png";
+import snapsortImg from "@/assets/projectImage/snapsort.png";
 
 /**
  * @typedef {Object} PortfolioProject
@@ -31,6 +32,7 @@ import fastApiImg from "@/assets/projectImage/fastApi.png";
  * @property {boolean} caseStudy
  * @property {string} playStoreUrl
  * @property {string} appStoreUrl
+ * @property {string} [apkUrl]
  */
 
 export const personalInfo = {
@@ -47,7 +49,7 @@ export const personalInfo = {
   resumeUrl:
     "https://drive.google.com/file/d/1Y2GK4ffFKYBu5uagPl8AO3Y_0FYL9HZa/view?usp=drive_link",
   yearsOfExperience: 2,
-  projectsCompleted: 19,
+  projectsCompleted: 20,
   stats: [
     { value: 2, suffix: "+", label: "Years Experience" },
     { value: 15, suffix: "+", label: "Mobile App Projects" },
@@ -231,6 +233,29 @@ export const projects = [
   },
   {
     id: 2,
+    name: "SnapSort -- Smart Screenshot Organizer",
+    category: "Productivity",
+    role: "Independent Mobile App Developer",
+    description:
+      "Offline-first Android app that scans screenshot text on the device so users can find saved images by words, filenames, or categories. Includes favorites and duplicate review without an account or app backend.",
+    impact:
+      "Makes saved screenshots searchable while keeping images and recognized text on the device. Android APK available to try.",
+    highlights: [
+      "Bundled ML Kit text recognition with a local SQLite index and category suggestions",
+      "Exact and perceptual image hashing for user-reviewed duplicate cleanup",
+      "Permission-aware photo access and Android-confirmed deletion through native Kotlin modules",
+    ],
+    techStack: ["React Native CLI", "TypeScript", "Kotlin", "ML Kit", "SQLite"],
+    image: snapsortImg,
+    featured: true,
+    caseStudy: false,
+    playStoreUrl: "",
+    appStoreUrl: "",
+    apkUrl:
+      "https://drive.google.com/file/d/1Wqv3k-UmBxtG1O5lrB35io05wpL1biJY/view?usp=sharing",
+  },
+  {
+    id: 3,
     name: "Snowtex Notify",
     category: "Notifications",
     role: "React Native Developer",
@@ -258,7 +283,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 3,
+    id: 4,
     name: "SaRa DC POS Mobile App",
     category: "POS",
     role: "React Native Developer",
@@ -286,7 +311,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 4,
+    id: 5,
     name: "Snowtex Shop POS",
     category: "POS",
     role: "React Native Developer",
@@ -314,7 +339,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 5,
+    id: 6,
     name: "Smart ERP Mobile App",
     category: "ERP",
     role: "Mobile App Developer",
@@ -343,7 +368,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 6,
+    id: 7,
     name: "Smart HRM",
     category: "HRM",
     role: "Mobile App Developer",
@@ -372,7 +397,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 7,
+    id: 8,
     name: "CRM Mobile App",
     category: "CRM",
     role: "React Native Developer",
@@ -401,7 +426,7 @@ export const projects = [
     appStoreUrl: "https://apps.apple.com/ng/app/crm-by-segasoftbd/id6755300179",
   },
   {
-    id: 8,
+    id: 9,
     name: "Quicker Delivery",
     category: "Logistics",
     role: "Mobile App Developer",
@@ -431,7 +456,7 @@ export const projects = [
       "https://apps.apple.com/dk/app/quicker-delivery/id6755297018?l=da",
   },
   {
-    id: 9,
+    id: 10,
     name: "Fresco Mobile App",
     category: "E-commerce",
     role: "Mobile App Developer",
@@ -460,7 +485,7 @@ export const projects = [
     appStoreUrl: "https://apps.apple.com/gb/app/fresco-lisboa/id6752566353",
   },
   {
-    id: 10,
+    id: 11,
     name: "Ab Mini Mercado Mobile App",
     category: "E-commerce",
     role: "Mobile App Developer",
@@ -489,7 +514,7 @@ export const projects = [
     appStoreUrl: "https://apps.apple.com/gb/app/ab-mini-mercado/id6753908732",
   },
   {
-    id: 11,
+    id: 12,
     name: "Invoice Mobile App",
     category: "POS",
     role: "Mobile App Developer",
@@ -518,7 +543,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 12,
+    id: 13,
     name: "Sale",
     category: "POS",
     role: "Mobile App Developer",
@@ -547,7 +572,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 13,
+    id: 14,
     name: "Snowtex Transport Mobile App",
     category: "Logistics",
     role: "React Native Developer",
@@ -575,7 +600,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 14,
+    id: 15,
     name: "Investor Management System",
     category: "Finance",
     role: "Mobile App Developer",
@@ -604,7 +629,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 15,
+    id: 16,
     name: "Clinical Management of Rape Module",
     category: "Healthcare",
     role: "React Native Developer",
@@ -633,7 +658,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 16,
+    id: 17,
     name: "Resilience Manitoba",
     category: "Education",
     role: "Mobile App Developer",
@@ -661,7 +686,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 17,
+    id: 18,
     name: "Resilience Manitoba FastAPI Backend",
     category: "Web/Backend",
     role: "Backend Developer",
@@ -689,7 +714,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 18,
+    id: 19,
     name: "Resilience Manitoba Admin",
     category: "Web/Backend",
     role: "Frontend Developer",
@@ -717,7 +742,7 @@ export const projects = [
     appStoreUrl: "",
   },
   {
-    id: 19,
+    id: 20,
     name: "FastAPI E-commerce Backend",
     category: "Web/Backend",
     role: "Backend Learning Project",
@@ -900,6 +925,7 @@ export const leadership = [
 
 export const projectCategories = [
   "All",
+  "Productivity",
   "E-commerce",
   "POS",
   "ERP",
