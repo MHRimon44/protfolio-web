@@ -44,15 +44,15 @@ const Skills = () => {
       gradient: "from-cyan-500 to-teal-500",
     },
     {
-      title: "API & Backend Flow",
+      title: "APIs & Services",
       icon: Cloud,
       items: skills.apiBackend,
       gradient: "from-teal-500 to-blue-500",
     },
     {
-      title: "Tools & Learning",
+      title: "Tools & Delivery",
       icon: Wrench,
-      items: [...skills.tools, ...skills.learning],
+      items: skills.tools,
       gradient: "from-blue-500 to-cyan-500",
     },
   ];

@@ -1,3 +1,4 @@
+import apkDownloaderImg from "@/assets/projectImage/apk-native-downloader.png";
 import abmImg from "@/assets/projectImage/abm.webp";
 import crmImg from "@/assets/projectImage/crm.webp";
 import deliveryImg from "@/assets/projectImage/delivery.webp";
@@ -14,7 +15,6 @@ import dcposImg from "@/assets/projectImage/dcpos.jpg";
 import shopposImg from "@/assets/projectImage/shoppos.png";
 import transportImg from "@/assets/projectImage/transport.png";
 import symbolImg from "@/assets/projectImage/symbol.png";
-import fastApiImg from "@/assets/projectImage/fastApi.png";
 import snapsortImg from "@/assets/projectImage/snapsort.png";
 
 /**
@@ -33,6 +33,7 @@ import snapsortImg from "@/assets/projectImage/snapsort.png";
  * @property {string} playStoreUrl
  * @property {string} appStoreUrl
  * @property {string} [apkUrl]
+ * @property {string} [npmUrl]
  */
 
 export const personalInfo = {
@@ -47,7 +48,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/hasanmehedi-dev/",
   github: "https://github.com/MHRimon44",
   resumeUrl:
-    "https://drive.google.com/file/d/1Y2GK4ffFKYBu5uagPl8AO3Y_0FYL9HZa/view?usp=drive_link",
+    "https://drive.google.com/file/d/1IWOQ3tz2SUlkvQAIpqwmFj1Ep_ALWFHR/view?usp=drive_link",
   yearsOfExperience: 2,
   projectsCompleted: 20,
   stats: [
@@ -103,66 +104,33 @@ export const coreCompetencies = [
 ];
 
 export const skills = {
-  languages: ["JavaScript", "TypeScript", "Python", "SQL", "C/C++"],
-  mobile: [
-    "React Native CLI",
-    "Expo",
-    "React Navigation",
-    "Expo Router",
-    "Android",
-    "iOS",
-    "NativeWind",
-    "Shopify Restyle",
-    "React Native Paper",
-  ],
+  languages: ["JavaScript", "TypeScript", "Kotlin", "Swift", "SQL", "C/C++"],
+  mobile: ["React Native CLI", "Expo", "Android", "iOS", "Native Modules"],
   stateAndStorage: [
     "Redux Toolkit",
     "RTK Query",
-    "Redux Persist",
-    "AsyncStorage",
+    "SQLite",
     "MMKV",
-    "Expo SQLite",
-    "op-sqlite",
-    "Zustand",
-    "TanStack Query",
+    "Offline-First Architecture",
   ],
-  ui: [
-    "Reusable Components",
-    "Responsive UI",
-    "Form-heavy UX",
-    "Bottom Sheets",
-    "FlashList",
-    "Tailwind CSS",
-    "shadcn/Radix UI",
-    "Charts",
-  ],
+  ui: ["StyleSheet", "NativeWind", "Tailwind CSS", "Shopify Restyle"],
   apiBackend: [
-    "REST API Integration",
-    "JWT Authentication",
-    "Payment Gateway WebView",
-    "Firebase FCM",
+    "REST APIs",
+    "Axios",
+    "Authentication Workflows",
+    "Cloudflare Turnstile",
+    "Firebase Auth",
+    "Firebase Cloud Messaging",
     "Notifee",
-    "FastAPI",
-    "PostgreSQL",
-    "pgvector",
-    "Docker",
-    "Nginx",
   ],
   tools: [
+    "Git",
     "GitHub",
     "GitLab",
     "Postman",
-    "Figma",
     "EAS Build",
     "Play Store Release",
     "App Store Release",
-  ],
-  learning: [
-    "Swift",
-    "Kotlin",
-    "Native Modules",
-    "OpenCLIP",
-    "Background Tasks",
   ],
 };
 
@@ -253,6 +221,28 @@ export const projects = [
     appStoreUrl: "",
     apkUrl:
       "https://drive.google.com/file/d/1Wqv3k-UmBxtG1O5lrB35io05wpL1biJY/view?usp=sharing",
+  },
+  {
+    id: 21,
+    name: "react-native-apk-native-downloader",
+    category: "Open Source",
+    role: "Package Author & Kotlin Native Module Developer",
+    description:
+      "Published an Android-only React Native package for in-app updates to private office apps distributed over a private network outside the Play Store. Downloads APKs inside the app and launches Android’s native installer without a browser redirect.",
+    impact:
+      "Gives internal apps an in-app update flow while reusing downloaded APKs to avoid repeated downloads.",
+    highlights: [
+      "Native APK downloads with progress events and installation-permission handling",
+      "Persistent Downloads storage, version-based APK lookup, file reuse, and FileProvider integration",
+      "Headless TypeScript API and autolinking; each app controls version checks and update UI",
+    ],
+    techStack: ["React Native", "Kotlin", "Android", "TypeScript", "npm"],
+    image: apkDownloaderImg,
+    featured: true,
+    caseStudy: false,
+    playStoreUrl: "",
+    appStoreUrl: "",
+    npmUrl: "https://www.npmjs.com/package/react-native-apk-native-downloader",
   },
   {
     id: 3,
@@ -685,90 +675,6 @@ export const projects = [
     playStoreUrl: "",
     appStoreUrl: "",
   },
-  {
-    id: 18,
-    name: "Resilience Manitoba FastAPI Backend",
-    category: "Web/Backend",
-    role: "Backend Developer",
-    description:
-      "Python API service for symbol metadata, categories, image uploads, CLIP embedding generation, and image-similarity search using PostgreSQL pgvector.",
-    impact:
-      "Backend foundation for symbol recognition/search workflows used by a mobile app and admin frontend.",
-    highlights: [
-      "Async FastAPI routes for categories, symbols, image upload, health checks, and search",
-      "OpenCLIP ViT-B-32 image embeddings, perceptual hashing, and pgvector similarity query",
-      "SQLAlchemy async ORM, Alembic migrations, Docker setup, and PostgreSQL vector storage",
-    ],
-    techStack: [
-      "FastAPI",
-      "Python",
-      "PostgreSQL",
-      "pgvector",
-      "SQLAlchemy",
-      "OpenCLIP",
-    ],
-    image: symbolImg,
-    featured: false,
-    caseStudy: true,
-    playStoreUrl: "",
-    appStoreUrl: "",
-  },
-  {
-    id: 19,
-    name: "Resilience Manitoba Admin",
-    category: "Web/Backend",
-    role: "Frontend Developer",
-    description:
-      "React/Vite admin dashboard for protected admin/reviewer access, symbol CRUD, category CRUD, image upload, similar-image search, pending review, documents, account, and theme support.",
-    impact:
-      "Administrative frontend designed to manage the symbol library and review submitted content.",
-    highlights: [
-      "Protected routes, role checks, token refresh interceptor, and auth failure handling",
-      "Symbol/category CRUD, image upload, similarity search result display, and pending-review screens",
-      "Document upload/download/delete flows using React Query, Axios, React Hook Form, Zod, Radix/shadcn, and Tailwind",
-    ],
-    techStack: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "TanStack Query",
-      "Axios",
-      "Tailwind",
-    ],
-    image: symbolImg,
-    featured: false,
-    caseStudy: false,
-    playStoreUrl: "",
-    appStoreUrl: "",
-  },
-  {
-    id: 20,
-    name: "FastAPI E-commerce Backend",
-    category: "Web/Backend",
-    role: "Backend Learning Project",
-    description:
-      "A-to-Z FastAPI backend project covering product, customer, order, payment, voucher, auth, background tasks, testing, Docker, PostgreSQL, Gunicorn, Nginx, and deployment concepts.",
-    impact:
-      "Structured backend learning project with a test target of 44 passed tests and production-style architecture practice.",
-    highlights: [
-      "CRUD APIs with filtering, sorting, pagination, validation, JWT auth, and service-repository architecture",
-      "Order stock validation, transaction behavior, payment methods, voucher logic, and background-task simulation",
-      "Pytest coverage, Alembic migrations, Docker Compose, PostgreSQL, Gunicorn/Uvicorn, Nginx, CORS, and logging",
-    ],
-    techStack: [
-      "FastAPI",
-      "Python",
-      "SQLModel",
-      "PostgreSQL",
-      "pytest",
-      "Docker",
-    ],
-    image: fastApiImg,
-    featured: false,
-    caseStudy: false,
-    playStoreUrl: "",
-    appStoreUrl: "",
-  },
 ];
 
 export const caseStudies = [
@@ -848,25 +754,6 @@ export const caseStudies = [
       "MMKV",
     ],
   },
-  {
-    id: 5,
-    title: "Symbol Search & Vector Backend",
-    project: "Resilience Manitoba / Symbol Library",
-    problem:
-      "The product needed mobile symbol education, image upload/scan flows, admin symbol management, and server-side similar-image search.",
-    solution:
-      "Connected the mobile app and React admin frontend to a FastAPI backend using PostgreSQL pgvector, OpenCLIP embeddings, image metadata, category/symbol CRUD, and similarity search APIs.",
-    result:
-      "Added full-stack and AI-adjacent portfolio depth beyond mobile UI by showing backend, admin, vector search, and image-processing architecture.",
-    stack: [
-      "React Native",
-      "React/Vite",
-      "FastAPI",
-      "PostgreSQL",
-      "pgvector",
-      "OpenCLIP",
-    ],
-  },
 ];
 
 export const education = [
@@ -925,6 +812,7 @@ export const leadership = [
 
 export const projectCategories = [
   "All",
+  "Open Source",
   "Productivity",
   "E-commerce",
   "POS",

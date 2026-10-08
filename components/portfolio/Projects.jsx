@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Apple, CheckCircle2, Download } from "lucide-react";
+import { Apple, CheckCircle2, Download, Package } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -138,7 +138,7 @@ const Projects = () => {
               </h2>
               <div className="w-24 h-1.5 bg-linear-to-r from-cyan-500 to-teal-500 mx-auto mb-4 rounded-full"></div>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Published apps, independent tools, and business applications
+                Published apps, open-source packages, and business applications
                 across productivity, marketplace, CRM, ERP, logistics, HRM,
                 healthcare, and finance.
               </p>
@@ -215,7 +215,7 @@ const Projects = () => {
                 <div className="p-6">
                   <div className="mb-4">
                     <div className="mb-2 flex items-start justify-between gap-3">
-                      <h3 className="text-xl font-bold text-white">
+                      <h3 className="text-xl font-bold text-white break-words">
                         {project.name}
                       </h3>
                     </div>
@@ -268,8 +268,22 @@ const Projects = () => {
 
                   {project.playStoreUrl ||
                   project.appStoreUrl ||
-                  project.apkUrl ? (
+                  project.apkUrl ||
+                  project.npmUrl ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {project.npmUrl && (
+                        <a
+                          href={project.npmUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${project.name} on npm (opens in a new tab)`}
+                          className="inline-flex items-center justify-center rounded-md border border-cyan-500/30 px-4 py-2 text-sm font-semibold text-cyan-400 transition-all hover:border-cyan-500 hover:bg-cyan-500/10"
+                        >
+                          <Package className="mr-2" size={16} />
+                          npm Package
+                        </a>
+                      )}
+
                       {project.playStoreUrl && (
                         <a
                           href={project.playStoreUrl}
